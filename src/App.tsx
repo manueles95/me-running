@@ -25,6 +25,7 @@ export default function App() {
           weeks={d.weeks}
           qualitySessions={d.quality_sessions}
           checkpoints={d.checkpoints}
+          futurePlan={d.future_plan}
         />
         <EngineTrends
           easyRuns={d.easy_runs}
@@ -33,8 +34,8 @@ export default function App() {
           targets={d.targets}
           athlete={d.athlete}
         />
-        <Volume weeks={d.weeks} plannedVolume={d.planned_volume} targets={d.targets} />
-        <LongRun points={d.long_run_progression} targets={d.targets} />
+        <Volume weeks={d.weeks} futurePlan={d.future_plan} targets={d.targets} />
+        <LongRun points={d.long_run_progression} futurePlan={d.future_plan} />
         <MilestoneWall milestones={d.milestones} />
         <ThenVsNow comparisons={d.comparisons} />
       </main>

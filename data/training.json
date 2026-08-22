@@ -67,11 +67,32 @@
     { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" }
   ],
 
-  "planned_volume": [
-    { "start": "2026-08-17", "km_target": 49 },
-    { "start": "2026-08-24", "km_target": 49 },
-    { "start": "2026-08-31", "km_target": 50 }
-  ],
+  "future_plan": {
+    "note": "Targets, not commitments. Everything after the Sep 10 checkpoint is provisional — paces get re-priced there, and volumes flex with life. The London build (Jan 4+) gets planned in December and appended then.",
+    "weeks": [
+      { "start": "2026-08-17", "km_target": 49, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #1 (done — ran hot)", "long_run_km": 18 },
+      { "start": "2026-08-24", "km_target": 49, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #2 — early start, Megablasts, 2:00 rec", "long_run_km": 18 },
+      { "start": "2026-08-31", "km_target": 50, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #3", "long_run_km": 18, "note": "Long run may take 19 km if the block absorbs cleanly (week-3 decision)" },
+      { "start": "2026-09-07", "km_target": 32, "type": "deload", "phase_id": "deload-sep",  "quality": "Light 3×6 optional", "long_run_km": 13, "note": "September checkpoint: EF trend + HR-at-4:40 read" },
+      { "start": "2026-09-14", "km_target": 50, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #1 @ checkpoint-priced band, 2:30 rec", "long_run_km": 20 },
+      { "start": "2026-09-21", "km_target": 38, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #2", "long_run_km": null, "note": "Partial week — flying to Turkey Sat Sep 26" },
+      { "start": "2026-09-28", "km_target": 0,  "type": "break",  "phase_id": "turkey",      "quality": null, "long_run_km": null, "note": "Turkey. Walk a lot. Eat everything." },
+      { "start": "2026-10-05", "km_target": 8,  "type": "break",  "phase_id": "turkey",      "quality": null, "long_run_km": null, "note": "Back Oct 8; a short shakeout or two if the legs ask" },
+      { "start": "2026-10-12", "km_target": 30, "type": "ramp",   "phase_id": "return-ramp", "quality": null, "long_run_km": 12, "note": "Return week 1: easy only, ~60%" },
+      { "start": "2026-10-19", "km_target": 44, "type": "ramp",   "phase_id": "return-ramp", "quality": "Reduced 4×6 to re-calibrate", "long_run_km": 15, "note": "Return week 2: near-full" },
+      { "start": "2026-10-26", "km_target": 40, "type": "race",   "phase_id": "return-ramp", "quality": "Race replaces quality", "long_run_km": null, "note": "Race week — 10K Sun Nov 1, goal sub-50" },
+      { "start": "2026-11-02", "km_target": 45, "type": "build",  "phase_id": "tempo-1",     "quality": "Tempo 2×12 min @ race-priced threshold, 2:00 float", "long_run_km": 16, "note": "Post-race recovery early week" },
+      { "start": "2026-11-09", "km_target": 50, "type": "build",  "phase_id": "tempo-1",     "quality": "Tempo 2×15 min", "long_run_km": 18 },
+      { "start": "2026-11-16", "km_target": 52, "type": "build",  "phase_id": "tempo-1",     "quality": "Tempo 20–25 min continuous", "long_run_km": 20 },
+      { "start": "2026-11-23", "km_target": 33, "type": "deload", "phase_id": "tempo-1",     "quality": "Optional short tempo", "long_run_km": 13 },
+      { "start": "2026-11-30", "km_target": 52, "type": "build",  "phase_id": "tempo-2",     "quality": "Tempo 25–28 min", "long_run_km": 21 },
+      { "start": "2026-12-07", "km_target": 54, "type": "build",  "phase_id": "tempo-2",     "quality": "Tempo 30 min", "long_run_km": 22 },
+      { "start": "2026-12-14", "km_target": 55, "type": "build",  "phase_id": "tempo-2",     "quality": "Tempo 30–35 min; long run may take MP-flavored finish", "long_run_km": 24, "note": "Volume cap week — the base phase peak" },
+      { "start": "2026-12-21", "km_target": 30, "type": "break",  "phase_id": "holiday",     "quality": null, "long_run_km": 13, "note": "Holiday deload — earned" },
+      { "start": "2026-12-28", "km_target": 36, "type": "break",  "phase_id": "holiday",     "quality": "Strides + one light tempo touch", "long_run_km": 16, "note": "Reset week; December checkpoint prices the London build" },
+      { "start": "2027-01-04", "km_target": null, "type": "build", "phase_id": "london-build", "quality": "Planned in December", "long_run_km": null, "note": "The 16 weeks begin." }
+    ]
+  },
 
   "monthly_ef": [
     { "month": "2026-03", "ef_avg": 0.983, "equiv_pace_at_145_s_per_km": 421, "note": "Late-March sample, thin" },

@@ -221,7 +221,7 @@
 }
 .road__phaselabel {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 12px;
   fill: var(--ink-2);
 }
 .road__phaselabel--planned {
@@ -235,13 +235,19 @@
   stroke: var(--line);
   stroke-width: 1;
 }
+.road__axishint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--ink-3);
+  letter-spacing: 0.04em;
+}
 .road__tick line {
   stroke: var(--line-strong);
   stroke-width: 1;
 }
 .road__ticklabel {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   fill: var(--ink-3);
   letter-spacing: 0.02em;
 }
@@ -256,30 +262,23 @@
 }
 .road__flaglabel {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 13px;
   fill: var(--ink);
 }
 .road__flaglabel--goal {
   fill: var(--dawn);
   font-weight: 600;
 }
+.road__flagdate {
+  fill: var(--ink-3);
+}
 .road__flagicon {
-  font-size: 12px;
-}
-.road__here-halo {
-  fill: var(--dawn);
-  opacity: 0.28;
-  animation: here-pulse 2.4s ease-in-out infinite;
-  transform-origin: center;
-}
-@keyframes here-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.28; }
-  50% { transform: scale(1.55); opacity: 0.1; }
+  font-size: 15px;
 }
 .road__here-dot {
   fill: var(--dawn);
   stroke: var(--bg);
-  stroke-width: 2;
+  stroke-width: 2.5;
 }
 .road__here-leader {
   stroke: var(--dawn);
@@ -293,13 +292,13 @@
 }
 .road__here-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12.5px;
   fill: var(--dawn);
   font-weight: 600;
   letter-spacing: 0.04em;
 }
 .road__here-run {
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* ---- Current block (§5.3) -------------------------------------------- */
@@ -475,7 +474,7 @@
 /* ---- Charts (§5.4–5.6) ----------------------------------------------- */
 .charts-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 .chart {
@@ -847,8 +846,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .road__here-halo {
-    animation: none;
-  }
-}

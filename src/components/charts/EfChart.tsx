@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import type { EasyRun, MonthlyEf, Targets } from '../../types/training';
 import { formatDateShort, formatPace, formatDate, formatMonthYear } from '../../lib/format';
-import { ChartFrame, TooltipBox, timeDomain, monthTicks, toMs, axisTick, axisLine } from './kit';
+import { ChartFrame, TooltipBox, toMs, axisTick, axisLine } from './kit';
 
 interface Props {
   easyRuns: EasyRun[];
@@ -20,6 +20,10 @@ interface Props {
 
 interface Row {
   t: number;
+  // Even per-entry x key (category axis) — the per-run window is only ~4 weeks,
+  // so a true time axis crushes it into a corner. Equal spacing keeps it legible.
+  x: string;
+  xlabel: string;
   date: string;
   // Per-run series
   runEf?: number;
@@ -31,7 +35,7 @@ interface Row {
   // Monthly series
   monthEf?: number;
   equivPace?: number;
-  monthLabel?: string;
+  monthKey?: string;
   monthNote?: string;
 }
 
@@ -40,6 +44,12 @@ interface Row {
 // an EF band at the same HR: EF = (60000 / pace_s_per_km) / hr.
 const REF_HR = 145;
 const efFromPace = (paceSPerKm: number) => 60000 / paceSPerKm / REF_HR;
+
+// Short month name for the compact monthly ticks (e.g. "2026-03" → "Mar").
+const monthShort = (ym: string) =>
+  new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' }).format(
+    new Date(`${ym}-01T00:00:00Z`),
+  );
 
 function rollingMean(values: number[], i: number, window = 3): number {
   const from = Math.max(0, i - window + 1);
@@ -56,6 +66,8 @@ export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
 
   const runRows: Row[] = validRuns.map((r, i) => ({
     t: toMs(r.date),
+    x: r.date,
+    xlabel: formatDateShort(r.date),
     date: r.date,
     runEf: r.ef,
     roll: validRuns.length > 1 ? Number(rollingMean(efs, i).toFixed(3)) : null,
@@ -69,15 +81,25 @@ export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
     .sort((a, b) => (a.month < b.month ? -1 : 1))
     .map((m) => ({
       t: toMs(`${m.month}-15`),
+      x: `M-${m.month}`,
+      xlabel: monthShort(m.month),
       date: `${m.month}-15`,
       monthEf: m.ef_avg,
       equivPace: m.equiv_pace_at_145_s_per_km,
-      monthLabel: m.month,
+      monthKey: m.month,
       monthNote: m.note,
     }));
 
   const data = [...monthRows, ...runRows].sort((a, b) => a.t - b.t);
   if (data.length === 0) return null;
+
+  // Thin the x labels: every month, plus a handful of run dates.
+  const labelMap: Record<string, string> = Object.fromEntries(data.map((d) => [d.x, d.xlabel]));
+  const runTickEvery = Math.max(1, Math.ceil(runRows.length / 5));
+  const ticks = [
+    ...monthRows.map((r) => r.x),
+    ...runRows.filter((_, i) => i % runTickEvery === 0 || i === runRows.length - 1).map((r) => r.x),
+  ];
 
   // December target as an EF band (pace band → EF at REF_HR).
   const band = targets.easy_pace_dec_2026?.band_s_per_km;
@@ -89,10 +111,6 @@ export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
   const allEf = [...efs, ...monthRows.map((m) => m.monthEf!)];
   const yLo = Math.min(...allEf) - 0.02;
   const yHi = Math.max(...allEf, targetBand?.hi ?? -Infinity) + 0.02;
-  const domain = timeDomain(
-    data.map((d) => d.date),
-    14,
-  );
 
   return (
     <ChartFrame
@@ -119,7 +137,7 @@ export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
           )}
         </span>
       }
-      height={288}
+      height={300}
       table={
         <table className="dtable mono">
           <thead>
@@ -169,16 +187,14 @@ export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
             />
           )}
           <XAxis
-            dataKey="t"
-            type="number"
-            scale="time"
-            domain={domain}
-            ticks={monthTicks(domain)}
-            tickFormatter={(v) => formatDateShort(new Date(v).toISOString().slice(0, 10))}
+            dataKey="x"
+            type="category"
+            ticks={ticks}
+            interval={0}
+            tickFormatter={(v) => labelMap[v as string] ?? ''}
             tick={axisTick}
             axisLine={axisLine}
             tickLine={false}
-            minTickGap={20}
           />
           <YAxis
             domain={[yLo, yHi]}
@@ -190,13 +206,15 @@ export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
           />
           <Tooltip
             cursor={{ stroke: 'var(--line-strong)' }}
+            allowEscapeViewBox={{ x: false, y: true }}
+            offset={14}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null;
               const p = payload[0]!.payload as Row;
               if (p.monthEf != null) {
                 return (
                   <TooltipBox
-                    title={`${formatMonthYear(`${p.monthLabel}-01`)} · monthly avg`}
+                    title={`${formatMonthYear(`${p.monthKey}-01`)} · monthly avg`}
                     rows={[
                       { label: 'EF avg', value: p.monthEf.toFixed(3), swatch: 'var(--ink-3)' },
                       { label: `Equiv pace @${REF_HR}`, value: formatPace(p.equivPace!) },

@@ -43,6 +43,16 @@ export function daysBetween(aIso: string, bIso: string): number {
   return Math.round((mexicoCityMidnight(bIso) - mexicoCityMidnight(aIso)) / DAY_MS);
 }
 
+/** Shift an ISO date by ±days, returning an ISO YYYY-MM-DD (CDMX calendar). */
+export function addDays(iso: string, days: number): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Mexico_City',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date(mexicoCityMidnight(iso) + days * DAY_MS));
+}
+
 /** Today's date in CDMX as an ISO YYYY-MM-DD string. */
 export function todayInMexicoCity(now: number = nowMs()): string {
   return new Intl.DateTimeFormat('en-CA', {

@@ -9,13 +9,13 @@ import {
   ReferenceLine,
   LabelList,
 } from 'recharts';
-import type { PlannedVolume, Targets, Week, WeekType } from '../types/training';
+import type { FuturePlan, Targets, Week, WeekType } from '../types/training';
 import { formatDateShort, formatKm, formatDate } from '../lib/format';
 import { ChartFrame, TooltipBox, axisTick, axisLine } from './charts/kit';
 
 interface Props {
   weeks: Week[];
-  plannedVolume: PlannedVolume[];
+  futurePlan: FuturePlan;
   targets: Targets;
 }
 
@@ -39,11 +39,14 @@ interface Row {
   start: string;
   km: number | null;
   planned: number | null;
-  type: WeekType | null;
+  type: WeekType;
   highlight?: string;
+  quality?: string | null;
+  note?: string;
 }
 
-export function Volume({ weeks, plannedVolume, targets }: Props) {
+export function Volume({ weeks, futurePlan, targets }: Props) {
+  const realStarts = new Set(weeks.map((w) => w.start));
   const rows: Row[] = [
     ...weeks.map((w) => ({
       start: w.start,
@@ -52,17 +55,22 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
       type: w.type,
       highlight: w.highlight,
     })),
-    ...plannedVolume.map((p) => ({
-      start: p.start,
-      km: null,
-      planned: p.km_target,
-      type: null,
-    })),
+    // Future weeks that haven't happened yet (skip any already logged as real).
+    ...futurePlan.weeks
+      .filter((p) => !realStarts.has(p.start))
+      .map((p) => ({
+        start: p.start,
+        km: null,
+        planned: p.km_target,
+        type: p.type,
+        quality: p.quality,
+        note: p.note,
+      })),
   ].sort((a, b) => (a.start < b.start ? -1 : 1));
 
   if (rows.length === 0) return null;
 
-  const usedTypes = Array.from(new Set(weeks.map((w) => w.type)));
+  const usedTypes = Array.from(new Set(rows.map((r) => r.type)));
   const cap = targets.weekly_km_cap;
 
   return (
@@ -74,8 +82,8 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
         </h2>
       </div>
       <p className="section__lede">
-        Colored by week type. The dips are deloads — smaller <em>on purpose</em>. Faded bars ahead
-        are planned intent, not yet run.
+        Colored by week type — deloads dip <em>on purpose</em>, breaks drop to the floor. Solid
+        bars are run; faded bars ahead are the plan. {futurePlan.note}
       </p>
 
       <ChartFrame
@@ -90,22 +98,23 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
             ))}
             <span className="legend__item">
               <span className="legend__swatch legend__swatch--ghost" />
-              Planned
+              Planned (faded)
             </span>
           </span>
         }
-        height={300}
+        height={320}
         table={
           <table className="dtable mono">
             <thead>
-              <tr><th>Week of</th><th>km</th><th>Type</th></tr>
+              <tr><th>Week of</th><th>km</th><th>Type</th><th>Status</th></tr>
             </thead>
             <tbody>
               {rows.map((r) => (
                 <tr key={r.start}>
                   <td>{formatDateShort(r.start)}</td>
-                  <td>{r.km != null ? formatKm(r.km) : `${r.planned} (plan)`}</td>
-                  <td>{r.type ? TYPE_LABEL[r.type] : 'planned'}</td>
+                  <td>{r.km != null ? formatKm(r.km) : r.planned != null ? formatKm(r.planned) : '—'}</td>
+                  <td>{TYPE_LABEL[r.type]}</td>
+                  <td>{r.km != null ? 'run' : 'planned'}</td>
                 </tr>
               ))}
             </tbody>
@@ -113,7 +122,7 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
         }
       >
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={rows} margin={{ top: 24, right: 16, bottom: 6, left: -8 }} barCategoryGap="22%">
+          <BarChart data={rows} margin={{ top: 24, right: 16, bottom: 6, left: -8 }} barCategoryGap="18%">
             <ReferenceLine
               y={cap}
               stroke="var(--line-strong)"
@@ -133,7 +142,7 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
               axisLine={axisLine}
               tickLine={false}
               interval="preserveStartEnd"
-              minTickGap={16}
+              minTickGap={34}
             />
             <YAxis
               tick={axisTick}
@@ -155,10 +164,12 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
                       {
                         label: isPlanned ? 'Planned' : 'Volume',
                         value: `${formatKm((isPlanned ? r.planned : r.km) ?? 0)} km`,
-                        swatch: r.type ? TYPE_COLOR[r.type] : 'var(--chart-planned)',
+                        swatch: TYPE_COLOR[r.type],
                       },
-                      { label: 'Type', value: r.type ? TYPE_LABEL[r.type] : 'planned' },
+                      { label: 'Type', value: TYPE_LABEL[r.type] },
+                      ...(isPlanned && r.quality ? [{ label: 'Session', value: r.quality }] : []),
                       ...(r.highlight ? [{ label: 'Note', value: r.highlight }] : []),
+                      ...(!r.highlight && r.note ? [{ label: 'Note', value: r.note }] : []),
                     ]}
                   />
                 );
@@ -168,16 +179,17 @@ export function Volume({ weeks, plannedVolume, targets }: Props) {
               {rows.map((r) => (
                 <Cell
                   key={r.start}
-                  fill="var(--chart-planned)"
-                  fillOpacity={0.28}
-                  stroke="var(--chart-planned)"
+                  fill={TYPE_COLOR[r.type]}
+                  fillOpacity={0.22}
+                  stroke={TYPE_COLOR[r.type]}
+                  strokeOpacity={0.6}
                   strokeDasharray="3 3"
                 />
               ))}
             </Bar>
             <Bar dataKey="km" radius={[4, 4, 0, 0]} isAnimationActive={false}>
               {rows.map((r) => (
-                <Cell key={r.start} fill={r.type ? TYPE_COLOR[r.type] : 'var(--ink-3)'} />
+                <Cell key={r.start} fill={TYPE_COLOR[r.type]} />
               ))}
               <LabelList dataKey="km" content={(props) => <BarNote {...props} rows={rows} />} />
             </Bar>

@@ -6,13 +6,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import type { LongRunPoint, Targets } from '../types/training';
+import type { FuturePlan, LongRunPoint } from '../types/training';
 import { formatDateShort, formatPace, formatKm, formatDate } from '../lib/format';
 import { ChartFrame, TooltipBox, timeDomain, monthTicks, toMs, axisTick, axisLine } from './charts/kit';
 
 interface Props {
   points: LongRunPoint[];
-  targets: Targets;
+  futurePlan: FuturePlan;
 }
 
 interface Row {
@@ -25,10 +25,7 @@ interface Row {
   note?: string;
 }
 
-// Where the dotted projection lands: the "by December" long-run target.
-const PROJECTION_DATE = '2026-12-20';
-
-export function LongRun({ points, targets }: Props) {
+export function LongRun({ points, futurePlan }: Props) {
   const sorted = [...points].sort((a, b) => (a.date < b.date ? -1 : 1));
   if (sorted.length === 0) return null;
 
@@ -43,24 +40,28 @@ export function LongRun({ points, targets }: Props) {
   }));
 
   const last = sorted[sorted.length - 1]!;
-  const target = targets.long_run_by_dec_km;
-  const hasProjection = target != null && PROJECTION_DATE > last.date;
+  // Planned long runs from the forward plan (future weeks with a target).
+  const planned = futurePlan.weeks
+    .filter((w) => w.long_run_km != null && w.start > last.date)
+    .map((w) => ({ date: w.start, km: w.long_run_km as number, note: w.note }))
+    .sort((a, b) => (a.date < b.date ? -1 : 1));
+
+  const hasProjection = planned.length > 0;
   if (hasProjection) {
-    // Anchor the dashed line at the last real point, then extend to the target.
+    // Anchor the dashed line at the last real run, then follow the plan.
     rows[rows.length - 1]!.proj = last.km;
-    rows.push({
-      t: toMs(PROJECTION_DATE),
-      date: PROJECTION_DATE,
-      km: null,
-      proj: target,
-    });
+    planned.forEach((pl) =>
+      rows.push({ t: toMs(pl.date), date: pl.date, km: null, proj: pl.km, note: pl.note }),
+    );
+    rows.sort((a, b) => a.t - b.t);
   }
 
+  const peakPlanned = planned.length ? Math.max(...planned.map((p) => p.km)) : null;
   const isos = rows.map((r) => r.date);
   const domain = timeDomain(isos, 12);
-  const kms = [...sorted.map((p) => p.km), ...(hasProjection ? [target] : [])];
+  const kms = [...sorted.map((p) => p.km), ...planned.map((p) => p.km)];
   const yMax = Math.max(...kms) + 3;
-  const yMin = Math.max(0, Math.min(...sorted.map((p) => p.km)) - 3);
+  const yMin = Math.max(0, Math.min(...kms) - 3);
 
   return (
     <section className="section" id="long-run" aria-labelledby="long-title">
@@ -71,8 +72,8 @@ export function LongRun({ points, targets }: Props) {
         </h2>
       </div>
       <p className="section__lede">
-        Each step is a new longest run. The dotted line is where it's headed — {formatKm(target)} km
-        by December.
+        Each step is a new longest run. The dotted line is the plan
+        {peakPlanned != null ? <> — building toward {formatKm(peakPlanned)} km in December</> : null}.
       </p>
 
       <ChartFrame
@@ -128,8 +129,11 @@ export function LongRun({ points, targets }: Props) {
                 if (r.km == null && r.proj != null && r.pace == null) {
                   return (
                     <TooltipBox
-                      title={`Target · ${formatDate(r.date)}`}
-                      rows={[{ label: 'Planned long run', value: `${formatKm(r.proj)} km`, swatch: 'var(--dawn)' }]}
+                      title={`Planned · ${formatDate(r.date)}`}
+                      rows={[
+                        { label: 'Long run', value: `${formatKm(r.proj)} km`, swatch: 'var(--dawn)' },
+                        ...(r.note ? [{ label: 'Note', value: r.note }] : []),
+                      ]}
                     />
                   );
                 }

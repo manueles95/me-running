@@ -1,4 +1,4 @@
-import type { Checkpoint, Phase, QualitySession, Week } from '../types/training';
+import type { Checkpoint, FuturePlan, Phase, QualitySession, Week } from '../types/training';
 import { daysBetween, todayInMexicoCity } from '../lib/dates';
 import { formatDate, formatKm, formatPace } from '../lib/format';
 
@@ -7,17 +7,23 @@ interface Props {
   weeks: Week[];
   qualitySessions: QualitySession[];
   checkpoints: Checkpoint[];
+  futurePlan: FuturePlan;
 }
 
 function weekCount(startIso: string, endIso: string): number {
   return Math.max(1, Math.ceil((daysBetween(startIso, endIso) + 1) / 7));
 }
 
-export function CurrentBlock({ phases, weeks, qualitySessions, checkpoints }: Props) {
+export function CurrentBlock({ phases, weeks, qualitySessions, checkpoints, futurePlan }: Props) {
   const current = phases.find((p) => p.status === 'current');
   if (!current) return null;
 
   const today = todayInMexicoCity();
+
+  // Next known session: the soonest upcoming planned week that has a quality.
+  const nextSession = [...futurePlan.weeks]
+    .filter((w) => w.quality && daysBetween(today, w.start) >= 0)
+    .sort((a, b) => (a.start < b.start ? -1 : 1))[0];
   const totalWeeks = weekCount(current.start, current.end);
   const elapsed = Math.floor(daysBetween(current.start, today) / 7) + 1;
   const weekN = Math.min(Math.max(elapsed, 1), totalWeeks);
@@ -80,6 +86,16 @@ export function CurrentBlock({ phases, weeks, qualitySessions, checkpoints }: Pr
             </div>
           )}
         </div>
+
+        {nextSession && (
+          <div className="block__next">
+            <span className="block__nextlabel mono">Next session</span>
+            <span className="block__nexttext">
+              {nextSession.quality}
+              <span className="block__nextq"> · week of {formatDate(nextSession.start)}</span>
+            </span>
+          </div>
+        )}
 
       </div>
 

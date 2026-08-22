@@ -120,6 +120,8 @@ export function ThresholdChart({ qualitySessions, projection }: Props) {
           />
           <Tooltip
             cursor={{ stroke: 'var(--line-strong)' }}
+            allowEscapeViewBox={{ x: false, y: true }}
+            offset={14}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null;
               const p = payload[0]!.payload as Row;
@@ -129,7 +131,6 @@ export function ThresholdChart({ qualitySessions, projection }: Props) {
                   rows={[
                     { label: 'Rep pace', value: formatPace(p.pace), swatch: PACE_COLOR },
                     { label: 'Rep HR', value: `${p.hr} bpm`, swatch: HR_COLOR },
-                    { label: 'Structure', value: p.structure },
                   ]}
                 />
               );

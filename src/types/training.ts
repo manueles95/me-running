@@ -54,9 +54,24 @@ export interface Week {
   highlight?: string;
 }
 
-export interface PlannedVolume {
+/**
+ * Forward plan (spec-additive). One entry per upcoming week — targets, not
+ * commitments. `km_target`/`long_run_km` are null where undecided (e.g. the
+ * London build, planned later); `type` mirrors the Week types.
+ */
+export interface FutureWeek {
   start: string;
-  km_target: number;
+  km_target: number | null;
+  type: WeekType;
+  phase_id: string;
+  quality: string | null;
+  long_run_km: number | null;
+  note?: string;
+}
+
+export interface FuturePlan {
+  note?: string;
+  weeks: FutureWeek[];
 }
 
 export interface EasyRun {
@@ -153,7 +168,7 @@ export interface TrainingData {
   races: Race[];
   phases: Phase[];
   weeks: Week[];
-  planned_volume: PlannedVolume[];
+  future_plan: FuturePlan;
   monthly_ef: MonthlyEf[];
   easy_runs: EasyRun[];
   quality_sessions: QualitySession[];
