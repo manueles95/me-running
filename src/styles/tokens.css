@@ -1,0 +1,160 @@
+/*
+ * Design tokens — "early-morning CDMX" (spec §6).
+ * Pre-dawn asphalt surfaces, jacaranda purple as the signature accent, a dawn
+ * amber/coral horizon for highlights. Not neon-on-black; not a generic fitness
+ * dark theme. Dark is the default (pre-dawn); light is the dawn-paper variant.
+ */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces — layered asphalt */
+  --bg: #101120;
+  --bg-2: #181a2b;
+  --bg-3: #202340;
+  --bg-inset: #0b0c17;
+  --line: rgba(233, 230, 248, 0.1);
+  --line-strong: rgba(233, 230, 248, 0.18);
+
+  /* Ink — near-white with a lavender cast */
+  --ink: #ecebf6;
+  --ink-2: #adaacb;
+  --ink-3: #706e8c;
+
+  /* Accents */
+  --jacaranda: #9d8bf6;
+  --jacaranda-deep: #6f5ce6;
+  --jacaranda-soft: rgba(157, 139, 246, 0.16);
+  --dawn: #f2b25c;
+  --dawn-soft: rgba(242, 178, 92, 0.16);
+  --coral: #ec7c6c;
+  --teal: #46b6a8;
+  --slate: #8790cc;
+  --taupe: #b39a80;
+
+  /* Categorical series — validated (dataviz skill) against --chart-surface for
+     lightness band, chroma, adjacent-pair CVD ΔE, normal-vision ΔE, contrast. */
+  --cat-build: #8f78ec;
+  --cat-deload: #c48435;
+  --cat-race: #dd6f5c;
+  --cat-break: #33a596;
+  --cat-ramp: #4f9bd6;
+
+  /* Chart plumbing */
+  --chart-surface: #181a2b;
+  --chart-ink: #ecebf6;
+  --chart-muted: #706e8c;
+  --chart-grid: rgba(233, 230, 248, 0.07);
+  --chart-band: rgba(70, 182, 168, 0.12);
+  --chart-planned: rgba(173, 170, 203, 0.28);
+
+  /* Status */
+  --ok: #5bbf8a;
+  --pending: #f2b25c;
+
+  /* Shape & motion */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 44px -28px rgba(0, 0, 0, 0.7);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Type */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope Variable', 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Layout */
+  --maxw: 940px;
+  --gutter: clamp(16px, 5vw, 40px);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f4f1ea;
+  --bg-2: #ffffff;
+  --bg-3: #fbf8f2;
+  --bg-inset: #efeae1;
+  --line: rgba(30, 27, 46, 0.11);
+  --line-strong: rgba(30, 27, 46, 0.2);
+
+  --ink: #1d1a2c;
+  --ink-2: #55516b;
+  --ink-3: #8a8699;
+
+  --jacaranda: #6a4fdd;
+  --jacaranda-deep: #563ec2;
+  --jacaranda-soft: rgba(106, 79, 221, 0.12);
+  --dawn: #c17a1a;
+  --dawn-soft: rgba(193, 122, 26, 0.14);
+  --coral: #cf5540;
+  --teal: #1c8b7d;
+  --slate: #545fb0;
+  --taupe: #927a5c;
+
+  --cat-build: #6a4fdd;
+  --cat-deload: #a9701a;
+  --cat-race: #cf5540;
+  --cat-break: #0f8a79;
+  --cat-ramp: #2f6fb0;
+
+  --chart-surface: #ffffff;
+  --chart-ink: #1d1a2c;
+  --chart-muted: #8a8699;
+  --chart-grid: rgba(30, 27, 46, 0.08);
+  --chart-band: rgba(28, 139, 125, 0.12);
+  --chart-planned: rgba(85, 81, 107, 0.28);
+
+  --ok: #2f9d6a;
+  --pending: #c17a1a;
+
+  --shadow: 0 1px 2px rgba(41, 37, 61, 0.08), 0 18px 40px -30px rgba(41, 37, 61, 0.35);
+  --shadow-soft: 0 1px 2px rgba(41, 37, 61, 0.07);
+}
+
+/* Respect system preference when the user hasn't chosen (no data-theme override). */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+
+    --bg: #f4f1ea;
+    --bg-2: #ffffff;
+    --bg-3: #fbf8f2;
+    --bg-inset: #efeae1;
+    --line: rgba(30, 27, 46, 0.11);
+    --line-strong: rgba(30, 27, 46, 0.2);
+
+    --ink: #1d1a2c;
+    --ink-2: #55516b;
+    --ink-3: #8a8699;
+
+    --jacaranda: #6a4fdd;
+    --jacaranda-deep: #563ec2;
+    --jacaranda-soft: rgba(106, 79, 221, 0.12);
+    --dawn: #c17a1a;
+    --dawn-soft: rgba(193, 122, 26, 0.14);
+    --coral: #cf5540;
+    --teal: #1c8b7d;
+    --slate: #545fb0;
+    --taupe: #927a5c;
+
+    --cat-build: #6a4fdd;
+    --cat-deload: #545fb0;
+    --cat-race: #c17a1a;
+    --cat-break: #927a5c;
+    --cat-ramp: #1c8b7d;
+
+    --chart-surface: #ffffff;
+    --chart-ink: #1d1a2c;
+    --chart-muted: #8a8699;
+    --chart-grid: rgba(30, 27, 46, 0.08);
+    --chart-band: rgba(28, 139, 125, 0.12);
+    --chart-planned: rgba(85, 81, 107, 0.28);
+
+    --ok: #2f9d6a;
+    --pending: #c17a1a;
+  }
+}

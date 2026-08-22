@@ -1,0 +1,854 @@
+/* Component styles for Road to London. Section order mirrors spec §5. */
+
+/* ---- Top bar / theme toggle ------------------------------------------- */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 18px;
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg-2);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+/* ---- Tags & chips ----------------------------------------------------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+}
+.tag--goal {
+  background: var(--jacaranda-soft);
+  border-color: transparent;
+  color: var(--ink);
+}
+
+/* ---- Hero (§5.1) ------------------------------------------------------ */
+.hero {
+  padding-top: clamp(28px, 7vw, 64px);
+}
+.hero__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--jacaranda);
+  margin-bottom: 10px;
+}
+.hero__title {
+  font-size: clamp(2.6rem, 11vw, 5.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  background: linear-gradient(180deg, var(--ink), color-mix(in oklab, var(--ink) 62%, var(--jacaranda)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero__count {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(16px, 4vw, 40px);
+  flex-wrap: wrap;
+  margin-top: clamp(20px, 4vw, 32px);
+}
+.hero__days {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 0.9;
+}
+.hero__daysnum {
+  font-size: clamp(4rem, 18vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--dawn);
+  font-variant-numeric: tabular-nums;
+}
+.hero__dayslabel {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--ink-2);
+  letter-spacing: 0;
+}
+.hero__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 14px;
+}
+.hero__clockrow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.hero__to {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+.hero__facts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero__date {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+.hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 12px 18px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.hero__chip:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+.hero__chiplabel {
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--jacaranda);
+  writing-mode: horizontal-tb;
+}
+.hero__chipbody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hero__chipbody strong {
+  font-weight: 600;
+}
+.hero__chipmeta {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+.hero__context {
+  margin-top: 30px;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3.4vw, 1.5rem);
+  color: var(--ink-2);
+  max-width: 30ch;
+}
+.hero__context em {
+  color: var(--dawn);
+  font-style: italic;
+}
+
+/* ---- The road (§5.2) -------------------------------------------------- */
+.road {
+  margin-top: 4px;
+}
+.road__scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 80% at 50% 0%, var(--bg-2), var(--bg));
+  border: 1px solid var(--line);
+  padding: 8px 4px 4px;
+}
+.road__svg {
+  display: block;
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+}
+.road__bed {
+  fill: none;
+  stroke: var(--bg-3);
+  stroke-width: 16;
+  stroke-linecap: round;
+}
+.road__center {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 12;
+  stroke-linecap: round;
+}
+.road__phase {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  opacity: 0.95;
+}
+.road__phase--break {
+  stroke-dasharray: 3 8;
+  stroke-width: 5;
+  opacity: 0.85;
+}
+.road__phase--highlight {
+  stroke-width: 9;
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--jacaranda) 55%, transparent));
+}
+.road__leader {
+  stroke-width: 1;
+  opacity: 0.4;
+}
+.road__phaselabel {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  fill: var(--ink-2);
+}
+.road__phaselabel--planned {
+  fill: var(--ink-3);
+}
+.road__phaselabel--current {
+  fill: var(--dawn);
+  font-weight: 600;
+}
+.road__ruler {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.road__tick line {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.road__ticklabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+.road__flagpole {
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+}
+.road__flagdot {
+  fill: var(--bg);
+  stroke: var(--ink-2);
+  stroke-width: 2;
+}
+.road__flaglabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  fill: var(--ink);
+}
+.road__flaglabel--goal {
+  fill: var(--dawn);
+  font-weight: 600;
+}
+.road__flagicon {
+  font-size: 12px;
+}
+.road__here-halo {
+  fill: var(--dawn);
+  opacity: 0.28;
+  animation: here-pulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes here-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.28; }
+  50% { transform: scale(1.55); opacity: 0.1; }
+}
+.road__here-dot {
+  fill: var(--dawn);
+  stroke: var(--bg);
+  stroke-width: 2;
+}
+.road__here-leader {
+  stroke: var(--dawn);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+.road__here-pill {
+  fill: var(--dawn-soft);
+  stroke: var(--dawn);
+  stroke-width: 1;
+}
+.road__here-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--dawn);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.road__here-run {
+  font-size: 11px;
+}
+
+/* ---- Current block (§5.3) -------------------------------------------- */
+.block {
+  padding: clamp(18px, 3.5vw, 28px);
+}
+.block__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.block__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 560;
+}
+.block__dates {
+  color: var(--ink-3);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+.block__weekpill {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--dawn-soft);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  min-width: 74px;
+}
+.block__weekn {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dawn);
+  line-height: 1;
+}
+.block__weekof {
+  font-size: 0.95rem;
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.block__weeklabel {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  margin-top: 3px;
+}
+.block__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+.block__cell {
+  background: var(--bg-3);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.block__cell--wide {
+  grid-column: span 2;
+}
+.block__celllabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+.block__cellvalue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 6px;
+  color: var(--ink);
+}
+.block__unit {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  font-weight: 400;
+}
+.block__cellnote {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  margin-top: 8px;
+  line-height: 1.45;
+}
+.block__next {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.block__nextlabel {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--jacaranda);
+  flex-shrink: 0;
+}
+.block__nexttext {
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.block__nextq {
+  color: var(--ink-2);
+}
+
+/* ---- Checkpoints (receipts vs open questions) ------------------------ */
+.checks {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.check {
+  padding: 14px 16px;
+  border-left: 3px solid var(--ink-3);
+}
+.check--open {
+  border-left-color: var(--pending);
+}
+.check--passed {
+  border-left-color: var(--ok);
+}
+.check__head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.check__icon {
+  font-weight: 700;
+}
+.check__icon--passed {
+  color: var(--ok);
+}
+.check__icon--open {
+  color: var(--pending);
+}
+.check__label {
+  font-weight: 600;
+}
+.check__date {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.check__q {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  margin-top: 8px;
+  line-height: 1.45;
+}
+.check--passed .check__q {
+  color: var(--ink-3);
+}
+.check__outcome {
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  line-height: 1.45;
+}
+
+/* ---- Charts (§5.4–5.6) ----------------------------------------------- */
+.charts-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.chart {
+  margin: 0;
+  padding: 18px 18px 12px;
+}
+.chart__cap {
+  margin-bottom: 6px;
+}
+.chart__title {
+  font-size: 1.05rem;
+  font-weight: 560;
+}
+.chart__sub {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.chart__plot {
+  width: 100%;
+}
+.chart__data {
+  margin-top: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.chart__data summary {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  list-style: none;
+  letter-spacing: 0.06em;
+}
+.chart__data summary::-webkit-details-marker {
+  display: none;
+}
+.chart__data summary::before {
+  content: '▸ ';
+}
+.chart__data[open] summary::before {
+  content: '▾ ';
+}
+.chart__tablewrap {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: center;
+}
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.legend__swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.legend__swatch--ghost {
+  background: transparent;
+  border: 1px dashed var(--chart-planned);
+}
+.legend__swatch--month {
+  background: var(--ink-3);
+  opacity: 0.4;
+}
+.legend__swatch--line {
+  background: var(--dawn);
+  height: 3px;
+  border-radius: 2px;
+}
+.legend__swatch--band {
+  background: var(--chart-band);
+  border: 1px solid var(--teal);
+}
+.chart__proj {
+  display: block;
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: 0.78rem;
+}
+
+.dtable {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.78rem;
+}
+.dtable th,
+.dtable td {
+  text-align: right;
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.dtable th:first-child,
+.dtable td:first-child {
+  text-align: left;
+}
+.dtable th {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+/* Recharts tooltip surface */
+.tt {
+  background: var(--bg-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  box-shadow: var(--shadow);
+  min-width: 150px;
+}
+.tt__title {
+  font-size: 0.74rem;
+  color: var(--ink-2);
+  margin-bottom: 6px;
+}
+.tt__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  padding: 2px 0;
+}
+.tt__swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.tt__label {
+  color: var(--ink-3);
+}
+.tt__value {
+  margin-left: auto;
+  color: var(--ink);
+  font-weight: 600;
+  max-width: 200px;
+  white-space: normal;
+  text-align: right;
+}
+
+.bar-note {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  fill: var(--ink-3);
+}
+.bar-note--star {
+  fill: var(--dawn);
+  font-weight: 600;
+}
+
+/* Recharts focus ring for keyboard users */
+.recharts-wrapper:focus-visible {
+  outline: 2px solid var(--jacaranda);
+  outline-offset: 2px;
+}
+
+/* ---- Milestone wall (§5.7) ------------------------------------------- */
+.wall {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.wall__card {
+  padding: 16px 18px;
+  border-left: 3px solid var(--jacaranda);
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.wall__card:hover {
+  transform: translateY(-2px);
+  border-left-color: var(--dawn);
+}
+.wall__date {
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.wall__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 560;
+  margin: 6px 0 8px;
+  line-height: 1.15;
+}
+.wall__detail {
+  font-size: 0.84rem;
+  color: var(--ink-2);
+}
+
+/* ---- Then vs now (§5.8) ---------------------------------------------- */
+.tvn {
+  display: grid;
+  gap: 18px;
+}
+.tvn__card {
+  padding: clamp(20px, 4vw, 30px);
+}
+.tvn__title {
+  font-size: 1.15rem;
+  font-weight: 560;
+  color: var(--ink-2);
+  margin-bottom: 20px;
+}
+.tvn__pair {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(12px, 3vw, 28px);
+}
+.tvn__side {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tvn__side--after {
+  text-align: right;
+}
+.tvn__tag {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+}
+.tvn__side--after .tvn__tag {
+  color: var(--dawn);
+}
+.tvn__date {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+.tvn__detail {
+  font-size: 1rem;
+  color: var(--ink);
+}
+.tvn__hr {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+.tvn__hrnum {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.tvn__side--after .tvn__hrnum {
+  color: var(--dawn);
+}
+.tvn__arrow {
+  font-size: 1.6rem;
+  color: var(--ink-3);
+}
+.tvn__punch {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 3.6vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.25;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+}
+
+/* ---- Gear (spec-additive, low prominence) ---------------------------- */
+.gear {
+  max-width: var(--maxw);
+  margin: clamp(48px, 8vw, 80px) auto 0;
+  padding: 0 var(--gutter);
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.gear__kicker {
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+.gear__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px 22px;
+  flex-wrap: wrap;
+}
+.gear__item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.gear__name {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.gear__role {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+/* ---- Footer (§5.9) --------------------------------------------------- */
+.footer {
+  max-width: var(--maxw);
+  margin: clamp(64px, 10vw, 110px) auto 0;
+  padding: 32px var(--gutter) 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.footer__philosophy {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  color: var(--ink);
+}
+.footer__meta {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+.footer__meta a {
+  color: var(--jacaranda);
+}
+
+/* ---- Responsive ------------------------------------------------------ */
+@media (max-width: 720px) {
+  .charts-2 {
+    grid-template-columns: 1fr;
+  }
+  .block__cell--wide {
+    grid-column: span 1;
+  }
+  .hero__meta {
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 460px) {
+  .tvn__pair {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-align: left;
+  }
+  .tvn__side--after {
+    text-align: left;
+  }
+  .tvn__arrow {
+    transform: rotate(90deg);
+    justify-self: start;
+  }
+  .block__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .road__here-halo {
+    animation: none;
+  }
+}

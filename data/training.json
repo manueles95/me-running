@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-21",
+
+  "athlete": {
+    "name": "Manuel",
+    "location": "Mexico City (2,240 m altitude)",
+    "zones": { "z2_ceiling_hr": 147, "lthr": 177 }
+  },
+
+  "races": [
+    {
+      "id": "chicago-2025",
+      "name": "Chicago Marathon",
+      "date": "2025-10-12",
+      "distance_km": 42.195,
+      "status": "completed",
+      "result_time_s": 13817,
+      "note": "First marathon. The baseline the whole project measures against."
+    },
+    {
+      "id": "cdmx-10k-2026",
+      "name": "10K — Día de Muertos weekend",
+      "date": "2026-11-01",
+      "distance_km": 10,
+      "status": "upcoming",
+      "goal": "Sub-50 (public), faster (quiet)"
+    },
+    {
+      "id": "half-2027",
+      "name": "Half marathon (TBD)",
+      "date": null,
+      "window": "2027-02/2027-03",
+      "distance_km": 21.097,
+      "status": "planned",
+      "goal": "London dress rehearsal, first-ever half"
+    },
+    {
+      "id": "london-2027",
+      "name": "London Marathon",
+      "date": "2027-04-25",
+      "distance_km": 42.195,
+      "status": "upcoming",
+      "goal": "Sub-3:30 (fallback 3:40)",
+      "is_goal_race": true
+    }
+  ],
+
+  "phases": [
+    { "id": "base-5x4",    "label": "Build: 5×4 threshold",            "start": "2026-07-20", "end": "2026-08-09", "status": "done" },
+    { "id": "deload-aug",  "label": "Deload",                          "start": "2026-08-10", "end": "2026-08-16", "status": "done" },
+    { "id": "base-4x6",    "label": "Build: 4×6 threshold",            "start": "2026-08-17", "end": "2026-09-06", "status": "current" },
+    { "id": "deload-sep",  "label": "Deload + September checkpoint",   "start": "2026-09-07", "end": "2026-09-13", "status": "planned" },
+    { "id": "base-4x8",    "label": "Build: 4×8 (short — trip)",       "start": "2026-09-14", "end": "2026-09-25", "status": "planned" },
+    { "id": "turkey",      "label": "Turkey with mom",                 "start": "2026-09-26", "end": "2026-10-08", "status": "planned", "kind": "break" },
+    { "id": "return-ramp", "label": "Return ramp → 10K race",          "start": "2026-10-09", "end": "2026-11-01", "status": "planned" },
+    { "id": "tempo-1",     "label": "Tempo block 1 (2×12 → 25 min)",   "start": "2026-11-02", "end": "2026-11-29", "status": "planned" },
+    { "id": "tempo-2",     "label": "Tempo block 2 (→ 30–35 min)",     "start": "2026-11-30", "end": "2026-12-20", "status": "planned" },
+    { "id": "holiday",     "label": "Holiday deload",                  "start": "2026-12-21", "end": "2027-01-03", "status": "planned", "kind": "break" },
+    { "id": "london-build","label": "London build (16 weeks)",         "start": "2027-01-04", "end": "2027-04-25", "status": "planned", "highlight": true }
+  ],
+
+  "weeks": [
+    { "start": "2026-07-20", "km": 45.0, "phase_id": "base-5x4",   "type": "build" },
+    { "start": "2026-07-27", "km": 50.2, "phase_id": "base-5x4",   "type": "build",  "highlight": "First 50 km week" },
+    { "start": "2026-08-03", "km": 48.9, "phase_id": "base-5x4",   "type": "build" },
+    { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" }
+  ],
+
+  "planned_volume": [
+    { "start": "2026-08-17", "km_target": 49 },
+    { "start": "2026-08-24", "km_target": 49 },
+    { "start": "2026-08-31", "km_target": 50 }
+  ],
+
+  "monthly_ef": [
+    { "month": "2026-03", "ef_avg": 0.983, "equiv_pace_at_145_s_per_km": 421, "note": "Late-March sample, thin" },
+    { "month": "2026-04", "ef_avg": 1.031, "equiv_pace_at_145_s_per_km": 401 },
+    { "month": "2026-05", "ef_avg": 1.025, "equiv_pace_at_145_s_per_km": 404 },
+    { "month": "2026-06", "ef_avg": 1.029, "equiv_pace_at_145_s_per_km": 402 },
+    { "month": "2026-07", "ef_avg": 1.044, "equiv_pace_at_145_s_per_km": 396, "note": "Threshold block + volume step landed mid-month; uptick began" }
+  ],
+
+  "easy_runs": [
+    { "date": "2026-07-23", "distance_km": 8.7,   "pace_s_per_km": 407, "avg_hr": 138.0, "ef": 1.063, "kind": "easy",     "note": "24h after first 5×4 + weights" },
+    { "date": "2026-07-24", "distance_km": 16.02, "pace_s_per_km": 447, "avg_hr": 144.5, "ef": 0.928, "kind": "long",     "note": "No HR strap (watch optical, reads high); ran by feel, conversational throughout" },
+    { "date": "2026-07-25", "distance_km": 6.11,  "pace_s_per_km": 421, "avg_hr": null,  "ef": null,  "kind": "recovery" },
+    { "date": "2026-07-27", "distance_km": 8.33,  "pace_s_per_km": 399, "avg_hr": 141.2, "ef": 1.066, "kind": "easy",     "note": "Best EF of July" },
+    { "date": "2026-07-29", "distance_km": 5.2,   "pace_s_per_km": 435, "avg_hr": 137.7, "ef": 1.001, "kind": "recovery" },
+    { "date": "2026-07-30", "distance_km": 8.69,  "pace_s_per_km": 418, "avg_hr": 140.2, "ef": 1.025, "kind": "easy",     "note": "First strides session (easy body ≈409 s/km @ 141)" },
+    { "date": "2026-08-01", "distance_km": 18.02, "pace_s_per_km": 421, "avg_hr": 143.5, "ef": 0.992, "kind": "long",     "note": "First 18 km; ~0% decoupling across halves" },
+    { "date": "2026-08-03", "distance_km": 8.33,  "pace_s_per_km": 409, "avg_hr": 138.3, "ef": 1.060, "kind": "easy" },
+    { "date": "2026-08-06", "distance_km": 7.41,  "pace_s_per_km": 406, "avg_hr": 141.5, "ef": 1.045, "kind": "easy",     "note": "Day after final 5×4, with strides" },
+    { "date": "2026-08-07", "distance_km": 8.11,  "pace_s_per_km": 406, "avg_hr": 138.9, "ef": 1.063, "kind": "easy" },
+    { "date": "2026-08-09", "distance_km": 16.58, "pace_s_per_km": 416, "avg_hr": 141.8, "ef": 1.017, "kind": "long",     "note": "First sub-7:00 long run" },
+    { "date": "2026-08-12", "distance_km": 6.65,  "pace_s_per_km": 417, "avg_hr": 142.8, "ef": 1.007, "kind": "easy",     "note": "Deload day 1, strides" },
+    { "date": "2026-08-14", "distance_km": 7.13,  "pace_s_per_km": 412, "avg_hr": 140.4, "ef": 1.036, "kind": "easy",     "note": "Deload" },
+    { "date": "2026-08-15", "distance_km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0, "ef": 1.018, "kind": "long",     "note": "Deload long run, max HR 157" },
+    { "date": "2026-08-17", "distance_km": 7.0,   "pace_s_per_km": 421, "avg_hr": 140.2, "ef": 1.017, "kind": "easy",     "note": "First run post-deload (wooden, normal)" },
+    { "date": "2026-08-19", "distance_km": 5.01,  "pace_s_per_km": 417, "avg_hr": 140.8, "ef": 1.021, "kind": "recovery", "note": "Flush after hot 4×6" },
+    { "date": "2026-08-20", "distance_km": 10.01, "pace_s_per_km": 415, "avg_hr": 140.3, "ef": 1.031, "kind": "easy",     "note": "Felt amazing; extended 8→10 on feel; strides throughout" }
+  ],
+
+  "quality_sessions": [
+    {
+      "date": "2026-07-14",
+      "label": "4×4 (final)",
+      "structure": "4 × 4:00 @ threshold, 1:30 rec",
+      "avg_rep_pace_s_per_km": 277,
+      "avg_rep_hr": 180,
+      "relative_effort": null,
+      "note": "Reps 857–871 m, tight negative split. Session absorbed → progressed to 5×4."
+    },
+    {
+      "date": "2026-07-22",
+      "label": "5×4 #1",
+      "structure": "5 × 4:00 @ 4:35–4:45, 1:30 rec",
+      "avg_rep_pace_s_per_km": 278,
+      "avg_rep_hr": 179.6,
+      "relative_effort": null,
+      "note": "First 20-minute quality session. Gold segment PR (CIERRA FUERTE)."
+    },
+    {
+      "date": "2026-07-28",
+      "label": "5×4 #2",
+      "structure": "5 × 4:00 @ 4:35–4:45, 1:30 rec",
+      "avg_rep_pace_s_per_km": 273,
+      "avg_rep_hr": 178.6,
+      "relative_effort": 125,
+      "note": "7 m spread across 5 reps; faster AND lower HR than week 1. 4 PRs."
+    },
+    {
+      "date": "2026-08-05",
+      "label": "5×4 #3 (final)",
+      "structure": "5 × 4:00 @ 4:35–4:45, 1:30 rec",
+      "avg_rep_pace_s_per_km": 274,
+      "avg_rep_hr": 177.2,
+      "relative_effort": 100,
+      "note": "Same work as #2, RE 125→100. Reps 2–4 at 175–177 = green light for 4×6."
+    },
+    {
+      "date": "2026-08-18",
+      "label": "4×6 #1",
+      "structure": "4 × 6:00 @ 4:35–4:45, 1:30 rec",
+      "avg_rep_pace_s_per_km": 277,
+      "avg_rep_hr": 186,
+      "relative_effort": 129,
+      "note": "Hot 9:45 start, Superblast by mistake. Paced 4:35–4:39 but HR 183–189 — ran VO2, not threshold. Fixes: early start, Megablasts, 2:00 rec."
+    }
+  ],
+
+  "long_run_progression": [
+    { "date": "2026-07-11", "km": 16.0,  "pace_s_per_km": 425, "avg_hr": 140.4 },
+    { "date": "2026-07-24", "km": 16.02, "pace_s_per_km": 447, "avg_hr": 144.5 },
+    { "date": "2026-08-01", "km": 18.02, "pace_s_per_km": 421, "avg_hr": 143.5 },
+    { "date": "2026-08-09", "km": 16.58, "pace_s_per_km": 416, "avg_hr": 141.8 },
+    { "date": "2026-08-15", "km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0 }
+  ],
+
+  "milestones": [
+    { "date": "2026-08-18", "title": "First 4×6 — biggest session ever", "detail": "24 min of quality @ 4:37/km avg, RE 129 (ran hot; lesson banked)" },
+    { "date": "2026-08-09", "title": "First sub-7:00 long run", "detail": "16.6 km @ 6:56/km, 142 bpm — closed the block" },
+    { "date": "2026-08-05", "title": "Green light for 4×6", "detail": "5×4 at 4:34/km avg costing only 177 bpm; RE 125→100 in two weeks" },
+    { "date": "2026-08-03", "title": "Easy pace consolidated in the 6:40s", "detail": "Back-to-back Mondays at EF ≥ 1.06, HR ≤ 141" },
+    { "date": "2026-08-01", "title": "First 50 km week + first 18 km run", "detail": "18 km with ~0% aerobic decoupling across two hours" },
+    { "date": "2026-07-28", "title": "4 PRs inside a workout", "detail": "5×4 #2: fastest 1K and 5K, reps within 7 meters of each other" },
+    { "date": "2026-07-22", "title": "First 5×4 — quality progression begins", "detail": "20 minutes of threshold, last rep fastest, gold segment PR" }
+  ],
+
+  "comparisons": [
+    {
+      "title": "Same streets, 20 months apart",
+      "before": { "date": "2024-12-03", "detail": "6.0 km @ 6:54/km", "hr": 167 },
+      "after":  { "date": "2026-08-03", "detail": "8.3 km @ 6:49/km", "hr": 138 },
+      "punchline": "Faster, longer, and 29 beats cheaper. Same engine — rebuilt."
+    },
+    {
+      "title": "The 10-mile that used to be a PR",
+      "before": { "date": "2025-02-23", "detail": "16.1 km @ 7:07/km — fastest 10 miles ever", "hr": 152 },
+      "after":  { "date": "2026-07-11", "detail": "16.0 km @ 7:05/km — a normal Saturday", "hr": 140 },
+      "punchline": "What was a ceiling is now the floor of the long-run progression."
+    },
+    {
+      "title": "The easy-pace year",
+      "before": { "date": "2025-12-15", "detail": "Easy runs ≈ 7:44/km", "hr": null },
+      "after":  { "date": "2026-08-20", "detail": "Easy runs ≈ 6:46/km", "hr": 140 },
+      "punchline": "A minute per kilometer, bought with boring, disciplined, repeated weeks."
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "date": "2026-08-05",
+      "label": "4×6 green light",
+      "question": "Reps consistent + HR drifting down at same pace across the 5×4 block?",
+      "status": "passed",
+      "outcome": "Yes — pace held at fast edge while avg rep HR fell 180 → 177; RE fell 125 → 100."
+    },
+    {
+      "date": "2026-09-10",
+      "label": "September checkpoint",
+      "question": "Has threshold moved? (HR at 4:40 in a clean 4×6 + full-month EF trend, all runs, all conditions)",
+      "status": "pending",
+      "outcome": null
+    }
+  ],
+
+  "targets": {
+    "easy_pace_dec_2026": { "band_s_per_km": [380, 395], "note": "6:25–6:35 central expectation; 6:20 = good-scenario outcome" },
+    "weekly_km_cap": 55,
+    "long_run_by_dec_km": 24,
+    "threshold_projection": "Bands likely move 4:35–4:45 → ~4:25–4:35 if September confirms"
+  },
+
+  "gear": [
+    { "name": "Nike Pegasus 41", "role": "easy + long runs" },
+    { "name": "Megablast", "role": "quality sessions" },
+    { "name": "Superblast", "role": "the Aug 18 mistake — easy days only now" },
+    { "name": "Garmin fēnix 7 Pro + HR strap", "role": "data source (strap or it didn't happen)" }
+  ]
+}
