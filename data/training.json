@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-21",
+  "updated_at": "2026-08-22",
 
   "athlete": {
     "name": "Manuel",
@@ -64,13 +64,13 @@
     { "start": "2026-07-20", "km": 45.0, "phase_id": "base-5x4",   "type": "build" },
     { "start": "2026-07-27", "km": 50.2, "phase_id": "base-5x4",   "type": "build",  "highlight": "First 50 km week" },
     { "start": "2026-08-03", "km": 48.9, "phase_id": "base-5x4",   "type": "build" },
-    { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" }
+    { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" },
+    { "start": "2026-08-17", "km": 49.4, "phase_id": "base-4x6",   "type": "build",  "highlight": "Longest run to date (18.35 km)" }
   ],
 
   "future_plan": {
     "note": "Targets, not commitments. Everything after the Sep 10 checkpoint is provisional — paces get re-priced there, and volumes flex with life. The London build (Jan 4+) gets planned in December and appended then.",
     "weeks": [
-      { "start": "2026-08-17", "km_target": 49, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #1 (done — ran hot)", "long_run_km": 18 },
       { "start": "2026-08-24", "km_target": 49, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #2 — early start, Megablasts, 2:00 rec", "long_run_km": 18 },
       { "start": "2026-08-31", "km_target": 50, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #3", "long_run_km": 18, "note": "Long run may take 19 km if the block absorbs cleanly (week-3 decision)" },
       { "start": "2026-09-07", "km_target": 32, "type": "deload", "phase_id": "deload-sep",  "quality": "Light 3×6 optional", "long_run_km": 13, "note": "September checkpoint: EF trend + HR-at-4:40 read" },
@@ -119,7 +119,8 @@
     { "date": "2026-08-15", "distance_km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0, "ef": 1.018, "kind": "long",     "note": "Deload long run, max HR 157" },
     { "date": "2026-08-17", "distance_km": 7.0,   "pace_s_per_km": 421, "avg_hr": 140.2, "ef": 1.017, "kind": "easy",     "note": "First run post-deload (wooden, normal)" },
     { "date": "2026-08-19", "distance_km": 5.01,  "pace_s_per_km": 417, "avg_hr": 140.8, "ef": 1.021, "kind": "recovery", "note": "Flush after hot 4×6" },
-    { "date": "2026-08-20", "distance_km": 10.01, "pace_s_per_km": 415, "avg_hr": 140.3, "ef": 1.031, "kind": "easy",     "note": "Felt amazing; extended 8→10 on feel; strides throughout" }
+    { "date": "2026-08-20", "distance_km": 10.01, "pace_s_per_km": 415, "avg_hr": 140.3, "ef": 1.031, "kind": "easy",     "note": "Felt amazing; extended 8→10 on feel; strides throughout" },
+    { "date": "2026-08-22", "distance_km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0, "ef": 0.998, "kind": "long",     "note": "Longest run to date; cheaper than the first 18 km (RE 76 vs 81). Silver segment PR at 144 bpm." }
   ],
 
   "quality_sessions": [
@@ -175,10 +176,12 @@
     { "date": "2026-07-24", "km": 16.02, "pace_s_per_km": 447, "avg_hr": 144.5 },
     { "date": "2026-08-01", "km": 18.02, "pace_s_per_km": 421, "avg_hr": 143.5 },
     { "date": "2026-08-09", "km": 16.58, "pace_s_per_km": 416, "avg_hr": 141.8 },
-    { "date": "2026-08-15", "km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0 }
+    { "date": "2026-08-15", "km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0 },
+    { "date": "2026-08-22", "km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0 }
   ],
 
   "milestones": [
+    { "date": "2026-08-22", "title": "Longest run to date", "detail": "18.35 km @ 7:06/km, 143 bpm — and cheaper than the first 18 km" },
     { "date": "2026-08-18", "title": "First 4×6 — biggest session ever", "detail": "24 min of quality @ 4:37/km avg, RE 129 (ran hot; lesson banked)" },
     { "date": "2026-08-09", "title": "First sub-7:00 long run", "detail": "16.6 km @ 6:56/km, 142 bpm — closed the block" },
     { "date": "2026-08-05", "title": "Green light for 4×6", "detail": "5×4 at 4:34/km avg costing only 177 bpm; RE 125→100 in two weeks" },
