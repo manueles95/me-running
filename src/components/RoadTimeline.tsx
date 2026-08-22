@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { Phase, Race } from '../types/training';
 import { addDays, daysBetween, todayInMexicoCity } from '../lib/dates';
 import { formatDate, formatMonthYear } from '../lib/format';
@@ -65,6 +65,7 @@ const PHASE_COLOR: Record<string, string> = {
 };
 
 export function RoadTimeline({ phases, races }: Props) {
+  const [activePhase, setActivePhase] = useState<string | null>(null);
   const model = useMemo(() => {
     // Domain: crop to the training window — start ~2 weeks before the first
     // block so the empty pre-training months don't eat ~40% of the width.
@@ -81,27 +82,13 @@ export function RoadTimeline({ phases, races }: Props) {
     const total = Math.max(1, daysBetween(startIso, endIso));
     const t = (iso: string) => Math.min(1, Math.max(0, daysBetween(startIso, iso) / total));
 
-    // Stagger phase labels into vertical tiers so short adjacent blocks
-    // (deloads, the trip) don't collide in the dense autumn stretch.
-    const TIERS = [-30, 32, -50, 52, -70, 72];
-    const GAP = 7;
-    const tierRight: number[] = new Array(TIERS.length).fill(-Infinity);
-    const phaseSegs = phases
-      .map((p) => {
-        const tMid = t(p.start) + (t(p.end) - t(p.start)) / 2;
-        return { phase: p, t0: t(p.start), t1: t(p.end), tMid, lx: xAt(tMid) };
-      })
-      .sort((a, b) => a.lx - b.lx)
-      .map((seg) => {
-        const halfW = (shortLabel(seg.phase.label).length * 7.3) / 2;
-        let tier = TIERS.findIndex((_, i) => tierRight[i]! + GAP <= seg.lx - halfW);
-        if (tier === -1) {
-          // No clear tier — pick the one whose last label ends soonest.
-          tier = tierRight.indexOf(Math.min(...tierRight));
-        }
-        tierRight[tier] = seg.lx + halfW;
-        return { ...seg, dy: TIERS[tier]! };
-      });
+    // Each phase is a colored segment plus a hover/tap dot at its midpoint;
+    // the name is revealed on interaction (see the accessible list for the
+    // always-available text version).
+    const phaseSegs = phases.map((p) => {
+      const tMid = t(p.start) + (t(p.end) - t(p.start)) / 2;
+      return { phase: p, t0: t(p.start), t1: t(p.end), tMid };
+    });
 
     // Elevation = training load. Control points: the Chicago origin (base
     // fitness), each block at its midpoint (load by kind + progressive-overload
@@ -251,13 +238,13 @@ export function RoadTimeline({ phases, races }: Props) {
               );
             })}
 
-            {/* Phase segments */}
-            {model.phaseSegs.map(({ phase, t0, t1, tMid, lx, dy }) => {
+            {/* Phase segments + hover/tap dots (names revealed on interaction) */}
+            {model.phaseSegs.map(({ phase, t0, t1, tMid }) => {
               const isBreak = phase.kind === 'break';
               const color = PHASE_COLOR[phase.status] ?? 'var(--ink-3)';
-              const ly = model.yAt(tMid);
-              const labelY = ly + dy;
-              const tickEnd = dy < 0 ? ly - 7 : ly + 7;
+              const cx = xAt(tMid);
+              const cy = model.yAt(tMid);
+              const isActive = activePhase === phase.id;
               return (
                 <g key={phase.id}>
                   <path
@@ -266,28 +253,28 @@ export function RoadTimeline({ phases, races }: Props) {
                       phase.highlight ? ' road__phase--highlight' : ''
                     }`}
                     style={{ stroke: color }}
-                  >
-                    <title>
-                      {phase.label} · {formatDate(phase.start)}–{formatDate(phase.end)}
-                    </title>
-                  </path>
-                  <line
-                    x1={lx}
-                    y1={tickEnd}
-                    x2={lx}
-                    y2={labelY + (dy < 0 ? 4 : -8)}
-                    className="road__leader"
-                    style={{ stroke: color }}
                   />
-                  <circle cx={lx} cy={ly} r={2.4} style={{ fill: color }} />
-                  <text
-                    x={lx}
-                    y={labelY}
-                    textAnchor="middle"
-                    className={`road__phaselabel road__phaselabel--${phase.status}`}
-                  >
-                    {shortLabel(phase.label)}
-                  </text>
+                  {isActive && (
+                    <circle className="road__dot-ring" cx={cx} cy={cy} r={9} style={{ stroke: color }} />
+                  )}
+                  <circle className="road__dot" cx={cx} cy={cy} r={isActive ? 5.5 : 4} style={{ fill: color }} />
+                  <circle
+                    className="road__dot-hit"
+                    cx={cx}
+                    cy={cy}
+                    r={16}
+                    fill="transparent"
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`${phase.label}, ${formatDate(phase.start)} to ${formatDate(
+                      phase.end,
+                    )}, ${phase.status}`}
+                    onMouseEnter={() => setActivePhase(phase.id)}
+                    onMouseLeave={() => setActivePhase((cur) => (cur === phase.id ? null : cur))}
+                    onFocus={() => setActivePhase(phase.id)}
+                    onBlur={() => setActivePhase((cur) => (cur === phase.id ? null : cur))}
+                    onClick={() => setActivePhase((cur) => (cur === phase.id ? null : phase.id))}
+                  />
                 </g>
               );
             })}
@@ -309,6 +296,33 @@ export function RoadTimeline({ phases, races }: Props) {
                 </text>
               </g>
             )}
+
+            {/* Phase name tooltip (on hover/tap/focus of a dot) */}
+            {(() => {
+              const seg = model.phaseSegs.find((s) => s.phase.id === activePhase);
+              if (!seg) return null;
+              const p = seg.phase;
+              const cx = xAt(seg.tMid);
+              const cy = model.yAt(seg.tMid);
+              const line1 = p.label;
+              const line2 = `${formatDate(p.start)} – ${formatDate(p.end)} · ${p.status}`;
+              const w = Math.max(line1.length, line2.length) * 6.7 + 26;
+              const h = 44;
+              const above = cy - h - 18 > 2;
+              const boxY = above ? cy - h - 16 : cy + 16;
+              const boxX = Math.min(Math.max(cx - w / 2, 6), VB_W - w - 6);
+              return (
+                <g className="road__tip" pointerEvents="none">
+                  <rect x={boxX} y={boxY} width={w} height={h} rx={8} className="road__tipbox" />
+                  <text x={boxX + 13} y={boxY + 19} className="road__tiptitle">
+                    {line1}
+                  </text>
+                  <text x={boxX + 13} y={boxY + 35} className="road__tipmeta">
+                    {line2}
+                  </text>
+                </g>
+              );
+            })()}
           </svg>
         </div>
       </div>
@@ -323,14 +337,4 @@ export function RoadTimeline({ phases, races }: Props) {
       </ol>
     </section>
   );
-}
-
-/** Compress a phase label for the crowded route; full text stays in the <title>. */
-function shortLabel(label: string): string {
-  return label
-    .replace(/Build: /, '')
-    .replace(/ threshold/, '')
-    .replace(/\s*\(.*?\)\s*/g, '')
-    .replace(/ with mom.*/, '')
-    .trim();
 }

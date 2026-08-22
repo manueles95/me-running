@@ -215,21 +215,37 @@
   stroke-width: 9;
   filter: drop-shadow(0 0 6px color-mix(in oklab, var(--jacaranda) 55%, transparent));
 }
-.road__leader {
-  stroke-width: 1;
-  opacity: 0.4;
+.road__dot {
+  stroke: var(--bg);
+  stroke-width: 2;
 }
-.road__phaselabel {
+.road__dot-ring {
+  fill: none;
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+.road__dot-hit {
+  cursor: pointer;
+}
+.road__dot-hit:focus {
+  outline: none;
+}
+.road__tipbox {
+  fill: var(--bg-2);
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
+}
+.road__tiptitle {
   font-family: var(--font-mono);
   font-size: 12px;
-  fill: var(--ink-2);
-}
-.road__phaselabel--planned {
-  fill: var(--ink-3);
-}
-.road__phaselabel--current {
-  fill: var(--dawn);
   font-weight: 600;
+  fill: var(--ink);
+}
+.road__tipmeta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-2);
 }
 .road__ruler {
   stroke: var(--line);
