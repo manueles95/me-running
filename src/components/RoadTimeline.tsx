@@ -285,13 +285,13 @@ export function RoadTimeline({ phases, races }: Props) {
             {/* You are here */}
             {!model.beforeStart && !model.afterEnd && (
               <g className="road__here" transform={`translate(${xAt(model.tToday)} ${model.yAt(model.tToday)})`}>
-                <line x1={0} y1={-8} x2={0} y2={-92} className="road__here-leader" />
+                <line x1={0} y1={8} x2={0} y2={92} className="road__here-leader" />
                 <circle r={7} className="road__here-dot" />
-                <rect x={-49} y={-108} width={98} height={19} rx={9.5} className="road__here-pill" />
-                <text y={-95} textAnchor="middle" className="road__here-label">
+                <rect x={-49} y={89} width={98} height={19} rx={9.5} className="road__here-pill" />
+                <text y={102} textAnchor="middle" className="road__here-label">
                   you are here
                 </text>
-                <text y={5} textAnchor="middle" className="road__here-run" aria-hidden="true">
+                <text y={-5} textAnchor="middle" className="road__here-run" aria-hidden="true">
                   🏃
                 </text>
               </g>
