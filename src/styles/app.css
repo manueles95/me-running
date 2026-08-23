@@ -513,6 +513,41 @@
 .chart__plot {
   width: 100%;
 }
+.chart__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 10px;
+  padding: 0 4px;
+}
+.chart__navbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-3);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.chart__navbtn:hover:not(:disabled) {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.chart__navbtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.chart__range {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  min-width: 150px;
+  text-align: center;
+}
 .chart__data {
   margin-top: 6px;
   border-top: 1px solid var(--line);

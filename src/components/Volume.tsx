@@ -9,9 +9,13 @@ import {
   ReferenceLine,
   LabelList,
 } from 'recharts';
+import { useState } from 'react';
 import type { FuturePlan, Targets, Week, WeekType } from '../types/training';
 import { formatDateShort, formatKm, formatDate } from '../lib/format';
+import { todayInMexicoCity } from '../lib/dates';
 import { ChartFrame, TooltipBox, axisTick, axisLine } from './charts/kit';
+
+const WINDOW = 5;
 
 interface Props {
   weeks: Week[];
@@ -68,10 +72,27 @@ export function Volume({ weeks, futurePlan, targets }: Props) {
       })),
   ].sort((a, b) => (a.start < b.start ? -1 : 1));
 
-  if (rows.length === 0) return null;
-
   const usedTypes = Array.from(new Set(rows.map((r) => r.type)));
   const cap = targets.weekly_km_cap;
+  // Fixed y-scale across windows so a 50 km bar reads the same height everywhere.
+  const peak = Math.max(cap, ...rows.map((r) => Math.max(r.km ?? 0, r.planned ?? 0)));
+  const yMax = Math.ceil(peak / 5) * 5 + 5;
+
+  // Show WINDOW weeks at a time, defaulting to the window around "now".
+  const maxStart = Math.max(0, rows.length - WINDOW);
+  const today = todayInMexicoCity();
+  const idxToday = rows.reduce((acc, r, i) => (r.start <= today ? i : acc), 0);
+  const [start, setStart] = useState(() => Math.min(Math.max(idxToday - 2, 0), maxStart));
+  const clampedStart = Math.min(start, maxStart);
+  const visible = rows.slice(clampedStart, clampedStart + WINDOW);
+
+  if (visible.length === 0) return null;
+
+  const rangeLabel = `${formatDateShort(visible[0]!.start)} – ${formatDateShort(
+    visible[visible.length - 1]!.start,
+  )}`;
+  const atStart = clampedStart <= 0;
+  const atEnd = clampedStart >= maxStart;
 
   return (
     <section className="section" id="volume" aria-labelledby="volume-title">
@@ -103,6 +124,31 @@ export function Volume({ weeks, futurePlan, targets }: Props) {
           </span>
         }
         height={320}
+        controls={
+          <>
+            <button
+              type="button"
+              className="chart__navbtn mono"
+              onClick={() => setStart((s) => Math.max(0, Math.min(s, maxStart) - 1))}
+              disabled={atStart}
+              aria-label="Previous week"
+            >
+              ← prev
+            </button>
+            <span className="chart__range mono" aria-live="polite">
+              {rangeLabel}
+            </span>
+            <button
+              type="button"
+              className="chart__navbtn mono"
+              onClick={() => setStart((s) => Math.min(maxStart, Math.min(s, maxStart) + 1))}
+              disabled={atEnd}
+              aria-label="Next week"
+            >
+              next →
+            </button>
+          </>
+        }
         table={
           <table className="dtable mono">
             <thead>
@@ -122,7 +168,7 @@ export function Volume({ weeks, futurePlan, targets }: Props) {
         }
       >
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={rows} margin={{ top: 24, right: 16, bottom: 6, left: -8 }} barCategoryGap="18%">
+          <BarChart data={visible} margin={{ top: 24, right: 16, bottom: 6, left: -8 }} barCategoryGap="34%" maxBarSize={64}>
             <ReferenceLine
               y={cap}
               stroke="var(--line-strong)"
@@ -141,10 +187,10 @@ export function Volume({ weeks, futurePlan, targets }: Props) {
               tick={axisTick}
               axisLine={axisLine}
               tickLine={false}
-              interval="preserveStartEnd"
-              minTickGap={34}
+              interval={0}
             />
             <YAxis
+              domain={[0, yMax]}
               tick={axisTick}
               axisLine={false}
               tickLine={false}
@@ -176,7 +222,7 @@ export function Volume({ weeks, futurePlan, targets }: Props) {
               }}
             />
             <Bar dataKey="planned" radius={[4, 4, 0, 0]} isAnimationActive={false}>
-              {rows.map((r) => (
+              {visible.map((r) => (
                 <Cell
                   key={r.start}
                   fill={TYPE_COLOR[r.type]}
@@ -188,10 +234,10 @@ export function Volume({ weeks, futurePlan, targets }: Props) {
               ))}
             </Bar>
             <Bar dataKey="km" radius={[4, 4, 0, 0]} isAnimationActive={false}>
-              {rows.map((r) => (
+              {visible.map((r) => (
                 <Cell key={r.start} fill={TYPE_COLOR[r.type]} />
               ))}
-              <LabelList dataKey="km" content={(props) => <BarNote {...props} rows={rows} />} />
+              <LabelList dataKey="km" content={(props) => <BarNote {...props} rows={visible} />} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

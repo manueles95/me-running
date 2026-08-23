@@ -8,12 +8,14 @@ export function ChartFrame({
   caption,
   height = 260,
   children,
+  controls,
   table,
 }: {
   title: string;
   caption?: ReactNode;
   height?: number;
   children: ReactNode;
+  controls?: ReactNode;
   table?: ReactNode;
 }) {
   return (
@@ -25,6 +27,7 @@ export function ChartFrame({
       <div className="chart__plot" style={{ height }}>
         {children}
       </div>
+      {controls && <div className="chart__controls">{controls}</div>}
       {table && (
         <details className="chart__data">
           <summary className="mono">data table</summary>
