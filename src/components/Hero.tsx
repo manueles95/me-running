@@ -33,6 +33,10 @@ export function Hero({ races }: Props) {
   const chicagoLine =
     chicago?.result_time_s != null ? formatClock(chicago.result_time_s) : null;
 
+  const days = goalCountdown?.days ?? null;
+  const weeks = days != null ? Math.floor(days / 7) : null;
+  const remDays = days != null ? days % 7 : null;
+
   return (
     <header className="hero" aria-labelledby="hero-title">
       <p className="hero__eyebrow mono">The road to</p>
@@ -53,6 +57,16 @@ export function Hero({ races }: Props) {
           <span className="hero__dayslabel">days</span>
         </div>
         <div className="hero__meta">
+          {weeks != null && (
+            <div
+              className="hero__weeks mono"
+              aria-label={`${weeks} weeks${remDays ? ` and ${remDays} days` : ''} until ${goal.name}`}
+            >
+              <span className="hero__weeksnum">{weeks}</span>
+              <span className="hero__weekslabel"> weeks</span>
+              {remDays ? <span className="hero__weeksrem"> · {remDays}d</span> : null}
+            </div>
+          )}
           <div className="hero__clockrow">
             <CountdownClock targetIso={goal.date} />
             <span className="hero__to">to the start line</span>

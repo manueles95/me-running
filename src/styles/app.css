@@ -96,6 +96,30 @@
   gap: 12px;
   padding-bottom: 14px;
 }
+.hero__weeks {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2px;
+}
+.hero__weeksnum {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.hero__weekslabel {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+.hero__weeksrem {
+  font-size: 0.9rem;
+  color: var(--ink-3);
+  margin-left: 4px;
+}
 .hero__clockrow {
   display: flex;
   align-items: baseline;
