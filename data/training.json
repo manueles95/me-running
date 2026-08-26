@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-22",
+  "updated_at": "2026-08-26",
 
   "athlete": {
     "name": "Manuel",
@@ -120,7 +120,9 @@
     { "date": "2026-08-17", "distance_km": 7.0,   "pace_s_per_km": 421, "avg_hr": 140.2, "ef": 1.017, "kind": "easy",     "note": "First run post-deload (wooden, normal)" },
     { "date": "2026-08-19", "distance_km": 5.01,  "pace_s_per_km": 417, "avg_hr": 140.8, "ef": 1.021, "kind": "recovery", "note": "Flush after hot 4×6" },
     { "date": "2026-08-20", "distance_km": 10.01, "pace_s_per_km": 415, "avg_hr": 140.3, "ef": 1.031, "kind": "easy",     "note": "Felt amazing; extended 8→10 on feel; strides throughout" },
-    { "date": "2026-08-22", "distance_km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0, "ef": 0.998, "kind": "long",     "note": "Longest run to date; cheaper than the first 18 km (RE 76 vs 81). Silver segment PR at 144 bpm." }
+    { "date": "2026-08-22", "distance_km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0, "ef": 0.998, "kind": "long",     "note": "Longest run to date; cheaper than the first 18 km (RE 76 vs 81). Silver segment PR at 144 bpm." },
+    { "date": "2026-08-24", "distance_km": 8.04,  "pace_s_per_km": 411, "avg_hr": 140.2, "ef": 1.041, "kind": "easy",     "note": "Day before 4×6 #2" },
+    { "date": "2026-08-26", "distance_km": 6.09,  "pace_s_per_km": 424, "avg_hr": 135.8, "ef": 1.042, "kind": "recovery", "note": "Flush after clean 4×6; lowest easy HR of the block" }
   ],
 
   "quality_sessions": [
@@ -168,6 +170,15 @@
       "avg_rep_hr": 186,
       "relative_effort": 129,
       "note": "Hot 9:45 start, Superblast by mistake. Paced 4:35–4:39 but HR 183–189 — ran VO2, not threshold. Fixes: early start, Megablasts, 2:00 rec."
+    },
+    {
+      "date": "2026-08-25",
+      "label": "4×6 #2",
+      "structure": "4 × 6:00 @ 4:35–4:45, 2:00 rec",
+      "avg_rep_pace_s_per_km": 280,
+      "avg_rep_hr": 178.9,
+      "relative_effort": 123,
+      "note": "First clean 4×6 — early start, Megablasts, 2:00 recoveries. 4:39–4:41 all four reps, avg HR 179 (vs 186 the week before). Baseline for the September checkpoint."
     }
   ],
 
