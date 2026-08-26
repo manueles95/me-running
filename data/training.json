@@ -121,7 +121,7 @@
     { "date": "2026-08-19", "distance_km": 5.01,  "pace_s_per_km": 417, "avg_hr": 140.8, "ef": 1.021, "kind": "recovery", "note": "Flush after hot 4×6" },
     { "date": "2026-08-20", "distance_km": 10.01, "pace_s_per_km": 415, "avg_hr": 140.3, "ef": 1.031, "kind": "easy",     "note": "Felt amazing; extended 8→10 on feel; strides throughout" },
     { "date": "2026-08-22", "distance_km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0, "ef": 0.998, "kind": "long",     "note": "Longest run to date; cheaper than the first 18 km (RE 76 vs 81). Silver segment PR at 144 bpm." },
-    { "date": "2026-08-24", "distance_km": 8.04,  "pace_s_per_km": 411, "avg_hr": 140.2, "ef": 1.041, "kind": "easy",     "note": "Day before 4×6 #2" },
+    { "date": "2026-08-24", "distance_km": 8.04,  "pace_s_per_km": 411, "avg_hr": 140.2, "ef": 1.041, "kind": "easy",     "note": "Easy run to open the week" },
     { "date": "2026-08-26", "distance_km": 6.09,  "pace_s_per_km": 424, "avg_hr": 135.8, "ef": 1.042, "kind": "recovery", "note": "Flush after clean 4×6; lowest easy HR of the block" }
   ],
 
