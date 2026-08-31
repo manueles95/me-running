@@ -125,7 +125,7 @@
     { "date": "2026-08-26", "distance_km": 6.09,  "pace_s_per_km": 424, "avg_hr": 135.8, "ef": 1.042, "kind": "recovery", "note": "Flush after clean 4×6; lowest easy HR of the block" },
     { "date": "2026-08-27", "distance_km": 8.21,  "pace_s_per_km": 403, "avg_hr": 140.0, "ef": 1.063, "kind": "easy" },
     { "date": "2026-08-29", "distance_km": 17.02, "pace_s_per_km": 413, "avg_hr": 143.5, "ef": 1.013, "kind": "long",     "note": "Silver segment PR (WTC al Parque Hundido); fastest 15 km and 10 miles to date" },
-    { "date": "2026-08-31", "distance_km": 8.02,  "pace_s_per_km": 399, "avg_hr": 139.3, "ef": 1.079, "kind": "easy",     "note": "Best EF on record (1.079) — but run in Megablasts, not the usual Superblasts" }
+    { "date": "2026-08-31", "distance_km": 8.02,  "pace_s_per_km": 399, "avg_hr": 139.3, "ef": 1.079, "kind": "easy",     "note": "Best EF on record (1.079); Megablasts for fun, so the number is flattered" }
   ],
 
   "quality_sessions": [
@@ -181,7 +181,7 @@
       "avg_rep_pace_s_per_km": 280,
       "avg_rep_hr": 178.9,
       "relative_effort": 123,
-      "note": "First clean 4×6 — early start, Megablasts, 2:00 recoveries. 4:39–4:41 all four reps, avg HR 179 (vs 186 the week before). Baseline for the September checkpoint."
+      "note": "First clean 4×6 — early start, Adios Pro 4, 2:00 recoveries. 4:39–4:41 all four reps, avg HR 179 (vs 186 the week before). Baseline for the September checkpoint."
     }
   ],
 
@@ -252,9 +252,10 @@
   },
 
   "gear": [
-    { "name": "Nike Pegasus 41", "role": "easy + long runs" },
-    { "name": "Megablast", "role": "quality sessions" },
-    { "name": "Superblast", "role": "the Aug 18 mistake — easy days only now" },
+    { "name": "ASICS Superblast 3", "role": "easy + long runs" },
+    { "name": "Adidas Adios Pro 4", "role": "quality sessions" },
+    { "name": "ASICS Megablast", "role": "easy days, for fun" },
+    { "name": "Nike Pegasus 41", "role": "retired at ~500 km" },
     { "name": "Garmin fēnix 7 Pro + HR strap", "role": "data source (strap or it didn't happen)" }
   ]
 }
