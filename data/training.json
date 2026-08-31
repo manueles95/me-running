@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-26",
+  "updated_at": "2026-08-31",
 
   "athlete": {
     "name": "Manuel",
@@ -65,13 +65,13 @@
     { "start": "2026-07-27", "km": 50.2, "phase_id": "base-5x4",   "type": "build",  "highlight": "First 50 km week" },
     { "start": "2026-08-03", "km": 48.9, "phase_id": "base-5x4",   "type": "build" },
     { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" },
-    { "start": "2026-08-17", "km": 49.4, "phase_id": "base-4x6",   "type": "build",  "highlight": "Longest run to date (18.35 km)" }
+    { "start": "2026-08-17", "km": 49.4, "phase_id": "base-4x6",   "type": "build",  "highlight": "Longest run to date (18.35 km)" },
+    { "start": "2026-08-24", "km": 49.5, "phase_id": "base-4x6",   "type": "build" }
   ],
 
   "future_plan": {
     "note": "Targets, not commitments. Everything after the Sep 10 checkpoint is provisional — paces get re-priced there, and volumes flex with life. The London build (Jan 4+) gets planned in December and appended then.",
     "weeks": [
-      { "start": "2026-08-24", "km_target": 49, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #2 — early start, Megablasts, 2:00 rec", "long_run_km": 18 },
       { "start": "2026-08-31", "km_target": 50, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #3", "long_run_km": 18, "note": "Long run may take 19 km if the block absorbs cleanly (week-3 decision)" },
       { "start": "2026-09-07", "km_target": 32, "type": "deload", "phase_id": "deload-sep",  "quality": "Light 3×6 optional", "long_run_km": 13, "note": "September checkpoint: EF trend + HR-at-4:40 read" },
       { "start": "2026-09-14", "km_target": 50, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #1 @ checkpoint-priced band, 2:30 rec", "long_run_km": 20 },
@@ -122,7 +122,10 @@
     { "date": "2026-08-20", "distance_km": 10.01, "pace_s_per_km": 415, "avg_hr": 140.3, "ef": 1.031, "kind": "easy",     "note": "Felt amazing; extended 8→10 on feel; strides throughout" },
     { "date": "2026-08-22", "distance_km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0, "ef": 0.998, "kind": "long",     "note": "Longest run to date; cheaper than the first 18 km (RE 76 vs 81). Silver segment PR at 144 bpm." },
     { "date": "2026-08-24", "distance_km": 8.04,  "pace_s_per_km": 411, "avg_hr": 140.2, "ef": 1.041, "kind": "easy",     "note": "Easy run to open the week" },
-    { "date": "2026-08-26", "distance_km": 6.09,  "pace_s_per_km": 424, "avg_hr": 135.8, "ef": 1.042, "kind": "recovery", "note": "Flush after clean 4×6; lowest easy HR of the block" }
+    { "date": "2026-08-26", "distance_km": 6.09,  "pace_s_per_km": 424, "avg_hr": 135.8, "ef": 1.042, "kind": "recovery", "note": "Flush after clean 4×6; lowest easy HR of the block" },
+    { "date": "2026-08-27", "distance_km": 8.21,  "pace_s_per_km": 403, "avg_hr": 140.0, "ef": 1.063, "kind": "easy" },
+    { "date": "2026-08-29", "distance_km": 17.02, "pace_s_per_km": 413, "avg_hr": 143.5, "ef": 1.013, "kind": "long",     "note": "Silver segment PR (WTC al Parque Hundido); fastest 15 km and 10 miles to date" },
+    { "date": "2026-08-31", "distance_km": 8.02,  "pace_s_per_km": 399, "avg_hr": 139.3, "ef": 1.079, "kind": "easy",     "note": "Best EF on record (1.079) — but run in Megablasts, not the usual Superblasts" }
   ],
 
   "quality_sessions": [
@@ -188,7 +191,8 @@
     { "date": "2026-08-01", "km": 18.02, "pace_s_per_km": 421, "avg_hr": 143.5 },
     { "date": "2026-08-09", "km": 16.58, "pace_s_per_km": 416, "avg_hr": 141.8 },
     { "date": "2026-08-15", "km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0 },
-    { "date": "2026-08-22", "km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0 }
+    { "date": "2026-08-22", "km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0 },
+    { "date": "2026-08-29", "km": 17.02, "pace_s_per_km": 413, "avg_hr": 143.5 }
   ],
 
   "milestones": [
