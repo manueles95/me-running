@@ -144,15 +144,25 @@ export interface Checkpoint {
   outcome: string | null;
 }
 
+export interface PaceBand {
+  /** [min, max] pace band in seconds/km. */
+  band_s_per_km: number[];
+  note?: string;
+}
+
 export interface Targets {
-  easy_pace_dec_2026: {
-    /** [min, max] pace band in seconds/km. */
-    band_s_per_km: number[];
-    note?: string;
-  };
+  easy_pace_dec_2026: PaceBand;
+  /** Where easy pace actually sits now — the practical output of a checkpoint. */
+  easy_pace_current?: PaceBand;
+  /** [min, max] threshold pace band in seconds/km. */
+  threshold_band_s_per_km?: number[];
+  threshold_note?: string;
   weekly_km_cap: number;
+  weekly_km_cap_note?: string;
   long_run_by_dec_km: number;
-  threshold_projection?: string;
+  /** Goal-race marathon pace in seconds/km. */
+  marathon_pace_s_per_km?: number;
+  marathon_pace_note?: string;
 }
 
 /** A shoe or device with its role (spec-additive). Notes rendered verbatim. */

@@ -469,6 +469,10 @@
 .check--passed {
   border-left-color: var(--ok);
 }
+/* Settled like --passed, but "the plan changed" rather than "the answer was yes". */
+.check--adjusted {
+  border-left-color: var(--jacaranda);
+}
 .check__head {
   display: flex;
   align-items: baseline;
@@ -480,6 +484,9 @@
 }
 .check__icon--passed {
   color: var(--ok);
+}
+.check__icon--adjusted {
+  color: var(--jacaranda);
 }
 .check__icon--open {
   color: var(--pending);
@@ -499,7 +506,8 @@
   margin-top: 8px;
   line-height: 1.45;
 }
-.check--passed .check__q {
+.check--passed .check__q,
+.check--adjusted .check__q {
   color: var(--ink-3);
 }
 .check__outcome {
@@ -509,6 +517,46 @@
   padding-top: 8px;
   border-top: 1px solid var(--line);
   line-height: 1.45;
+}
+
+/* Easy pace now vs December target — the checkpoint's practical output,
+   sitting directly above the efficiency chart that produced it. */
+.paces {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 14px 0 0;
+}
+.paces__item {
+  padding: 12px 14px;
+  border-left: 3px solid var(--dawn);
+  background: var(--dawn-soft);
+  border-radius: 0 8px 8px 0;
+}
+.paces__item + .paces__item {
+  border-left-color: var(--ink-3);
+  background: transparent;
+}
+.paces__k {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.paces__v {
+  margin: 4px 0 0;
+}
+.paces__num {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.paces__note {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-2);
 }
 
 /* ---- Charts (§5.4–5.6) ----------------------------------------------- */

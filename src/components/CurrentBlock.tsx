@@ -113,21 +113,34 @@ export function CurrentBlock({ phases, weeks, qualitySessions, checkpoints, futu
               <p className="check__q">{c.question}</p>
             </li>
           ))}
-          {settledCheckpoints.map((c) => (
-            <li className="check check--passed card" key={`${c.date}-${c.label}`}>
-              <div className="check__head">
-                <span className="check__icon check__icon--passed" aria-hidden="true">
-                  ✓
-                </span>
-                <span className="check__label">{c.label}</span>
-                <span className="check__date mono">
-                  {c.status === 'adjusted' ? 'adjusted' : 'passed'} · {formatDate(c.date)}
-                </span>
-              </div>
-              <p className="check__q">{c.question}</p>
-              {c.outcome && <p className="check__outcome">{c.outcome}</p>}
-            </li>
-          ))}
+          {settledCheckpoints.map((c) => {
+            // Both are receipts, but "adjusted" means the plan moved rather than
+            // the answer being yes — so it gets its own mark and colour.
+            const adjusted = c.status === 'adjusted';
+            return (
+              <li
+                className={`check card ${adjusted ? 'check--adjusted' : 'check--passed'}`}
+                key={`${c.date}-${c.label}`}
+              >
+                <div className="check__head">
+                  <span
+                    className={`check__icon ${
+                      adjusted ? 'check__icon--adjusted' : 'check__icon--passed'
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {adjusted ? '↻' : '✓'}
+                  </span>
+                  <span className="check__label">{c.label}</span>
+                  <span className="check__date mono">
+                    {adjusted ? 'adjusted' : 'passed'} · {formatDate(c.date)}
+                  </span>
+                </div>
+                <p className="check__q">{c.question}</p>
+                {c.outcome && <p className="check__outcome">{c.outcome}</p>}
+              </li>
+            );
+          })}
         </ul>
       )}
     </section>

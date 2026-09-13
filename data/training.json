@@ -67,13 +67,13 @@
     { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" },
     { "start": "2026-08-17", "km": 49.4, "phase_id": "base-4x6",   "type": "build",  "highlight": "Longest run to date (18.35 km)" },
     { "start": "2026-08-24", "km": 49.5, "phase_id": "base-4x6",   "type": "build" },
-    { "start": "2026-08-31", "km": 53.7, "phase_id": "base-4x6",   "type": "build",  "highlight": "First 20 km run; biggest week yet" }
+    { "start": "2026-08-31", "km": 53.6, "phase_id": "base-4x6",   "type": "build",  "highlight": "Biggest week yet — closed with first 20 km run" },
+    { "start": "2026-09-07", "km": 31.2, "phase_id": "deload-sep", "type": "deload", "highlight": "September checkpoint" }
   ],
 
   "future_plan": {
     "note": "Targets, not commitments. Everything after the Sep 10 checkpoint is provisional — paces get re-priced there, and volumes flex with life. The London build (Jan 4+) gets planned in December and appended then.",
     "weeks": [
-      { "start": "2026-09-07", "km_target": 32, "type": "deload", "phase_id": "deload-sep",  "quality": "Light 3×6 optional", "long_run_km": 13, "note": "September checkpoint: EF trend + HR-at-4:40 read" },
       { "start": "2026-09-14", "km_target": 50, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #1 @ checkpoint-priced band, 2:30 rec", "long_run_km": 20 },
       { "start": "2026-09-21", "km_target": 38, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #2", "long_run_km": null, "note": "Partial week — flying to Turkey Sat Sep 26" },
       { "start": "2026-09-28", "km_target": 0,  "type": "break",  "phase_id": "turkey",      "quality": null, "long_run_km": null, "note": "Turkey. Walk a lot. Eat everything." },
@@ -99,7 +99,9 @@
     { "month": "2026-04", "ef_avg": 1.031, "equiv_pace_at_145_s_per_km": 401 },
     { "month": "2026-05", "ef_avg": 1.025, "equiv_pace_at_145_s_per_km": 404 },
     { "month": "2026-06", "ef_avg": 1.029, "equiv_pace_at_145_s_per_km": 402 },
-    { "month": "2026-07", "ef_avg": 1.044, "equiv_pace_at_145_s_per_km": 396, "note": "Threshold block + volume step landed mid-month; uptick began" }
+    { "month": "2026-07", "ef_avg": 1.044, "equiv_pace_at_145_s_per_km": 396, "note": "Threshold block + volume step landed mid-month; uptick began" },
+    { "month": "2026-08", "ef_avg": 1.039, "equiv_pace_at_145_s_per_km": 398, "note": "Flat month — the predicted consolidation after July's step. Deload week and hot late starts dragged the average; best days still matched July's peaks." },
+    { "month": "2026-09", "ef_avg": 1.102, "equiv_pace_at_145_s_per_km": 376, "note": "Partial month (through Sep 12) and deload-fresh — treat as provisional. Runs ≥8 km give the cleaner 1.06–1.08." }
   ],
 
   "easy_runs": [
@@ -128,11 +130,11 @@
     { "date": "2026-08-31", "distance_km": 8.02,  "pace_s_per_km": 399, "avg_hr": 139.3, "ef": 1.079, "kind": "easy",     "note": "Best EF on record (1.079); Megablasts for fun, so the number is flattered" },
     { "date": "2026-09-01", "distance_km": 10.01, "pace_s_per_km": 401, "avg_hr": 140.5, "ef": 1.065, "kind": "easy" },
     { "date": "2026-09-03", "distance_km": 5.58,  "pace_s_per_km": 397, "avg_hr": 134.2, "ef": 1.126, "kind": "recovery", "note": "Short and cheap — 6:37/km at 134 bpm" },
-    { "date": "2026-09-06", "distance_km": 20.02, "pace_s_per_km": 411, "avg_hr": 146.6, "ef": 0.996, "kind": "long",     "note": "First 20 km; 6 silver and 11 bronze segment PRs" },
+    { "date": "2026-09-06", "distance_km": 20.02, "pace_s_per_km": 411, "avg_hr": 146.6, "ef": 0.995, "kind": "long",     "note": "New longest run. Hilly Reforma–Chapultepec route (78 m gain), 18 segment PRs. Ran at the Z2 ceiling — closed the biggest week yet (53.6 km)." },
     { "date": "2026-09-08", "distance_km": 8.01,  "pace_s_per_km": 344, "avg_hr": 154.6, "ef": 1.128, "kind": "steady",   "note": "Steady run at 5:44/km — held out of the easy-run EF progression" },
-    { "date": "2026-09-09", "distance_km": 6.08,  "pace_s_per_km": 389, "avg_hr": 138.4, "ef": 1.114, "kind": "easy" },
-    { "date": "2026-09-10", "distance_km": 7.02,  "pace_s_per_km": 417, "avg_hr": 142.3, "ef": 1.011, "kind": "easy" },
-    { "date": "2026-09-12", "distance_km": 10.1,  "pace_s_per_km": 385, "avg_hr": 144.0, "ef": 1.082, "kind": "easy" }
+    { "date": "2026-09-09", "distance_km": 6.08,  "pace_s_per_km": 389, "avg_hr": 138.4, "ef": 1.115, "kind": "easy",     "note": "Deload. Best pace-to-HR pairing in the file at the time; short-run flattery applies." },
+    { "date": "2026-09-10", "distance_km": 7.02,  "pace_s_per_km": 417, "avg_hr": 144.0, "ef": 1.000, "kind": "easy",     "note": "Six clean strides — 15–20s each, walking recoveries, HR peaks flat at 161–167, cadence to 91. Average diluted by the pickups." },
+    { "date": "2026-09-12", "distance_km": 10.1,  "pace_s_per_km": 385, "avg_hr": 144.0, "ef": 1.081, "kind": "easy",     "note": "Checkpoint's best data point: hilly Chapultepec route, negative split (6:29 → 6:17/km), whole run spent on the phone — conversational effort verified. Target December pace showing up on a real run." }
   ],
 
   "quality_sessions": [
@@ -192,12 +194,12 @@
     },
     {
       "date": "2026-09-02",
-      "label": "4×6 #3",
-      "structure": "4 × 6:00 @ 4:35–4:45, 2:00 rec",
+      "label": "4×6 #3 (block close)",
+      "structure": "4 × 6:00 @ 4:35–4:45, 2:00 rec — track, 8:09 start, Superblast trainers",
       "avg_rep_pace_s_per_km": 279,
       "avg_rep_hr": 179.1,
       "relative_effort": 100,
-      "note": "Reps 4:43 / 4:39 / 4:36 / 4:38 — conservative opener, fastest third. Same pace and HR as #2, but RE 123 → 100. Run in Megablasts."
+      "note": "The block's clean measurement. Reps 4:43/4:39/4:36/4:38, zero cardiac drift (rep 4 HR below rep 1), 30+ bpm recovery in each float. Same pace and HR as the previous week but in trainers rather than carbon racers. Warmup and cooldown corrected (6:53 @ 143 and 7:03 @ 148)."
     }
   ],
 
@@ -213,7 +215,9 @@
   ],
 
   "milestones": [
-    { "date": "2026-09-06", "title": "First 20 km run", "detail": "20.02 km @ 6:51/km, 147 bpm — closing a 53.7 km week, the biggest yet" },
+    { "date": "2026-09-12", "title": "December target pace, five months early", "detail": "10.1 km @ 6:25/km, 144 bpm, hills, negative split — run entirely on the phone" },
+    { "date": "2026-09-06", "title": "First 20 km", "detail": "20.02 km with 78 m of climbing, closing a 53.6 km week — both new highs" },
+    { "date": "2026-09-02", "title": "4×6 block closed 30% cheaper than it opened", "detail": "RE 129 → 100 at the same pace, in trainers instead of racers, with zero cardiac drift" },
     { "date": "2026-08-22", "title": "Longest run to date", "detail": "18.35 km @ 7:06/km, 143 bpm — and cheaper than the first 18 km" },
     { "date": "2026-08-18", "title": "First 4×6 — biggest session ever", "detail": "24 min of quality @ 4:37/km avg, RE 129 (ran hot; lesson banked)" },
     { "date": "2026-08-09", "title": "First sub-7:00 long run", "detail": "16.6 km @ 6:56/km, 142 bpm — closed the block" },
@@ -254,19 +258,31 @@
       "outcome": "Yes — pace held at fast edge while avg rep HR fell 180 → 177; RE fell 125 → 100."
     },
     {
-      "date": "2026-09-10",
+      "date": "2026-09-12",
       "label": "September checkpoint",
       "question": "Has threshold moved? (HR at 4:40 in a clean 4×6 + full-month EF trend, all runs, all conditions)",
+      "status": "adjusted",
+      "outcome": "Easy paces re-priced down; threshold band held. Month-long easy EF rose 1.039 → 1.055 (1.060 on runs ≥8 km), with the trend climbing inside the month: 1.022 (Aug 12–20) → 1.063 (Aug 26–Sep 1) → 1.121 (Sep 3–9). Threshold cost fell sharply across the three 4×6s (RE 129 → 123 → 100) at held pace and in slower shoes, but HR at 4:40 is still ~179 vs LTHR 177 — short of the 175–176 criterion, so the band stays. Suspicion: LTHR may itself have drifted up; the Nov 1 10K will give a free, more accurate LTHR estimate."
+    },
+    {
+      "date": "2026-11-01",
+      "label": "10K race — LTHR re-test",
+      "question": "What does the race say about LTHR and true threshold pace? (avg HR over the closing ~20 min ≈ LTHR)",
       "status": "pending",
       "outcome": null
     }
   ],
 
   "targets": {
-    "easy_pace_dec_2026": { "band_s_per_km": [380, 395], "note": "6:25–6:35 central expectation; 6:20 = good-scenario outcome" },
-    "weekly_km_cap": 55,
+    "easy_pace_dec_2026": { "band_s_per_km": [380, 395], "note": "6:20–6:35. Re-priced at the September checkpoint from 'optimistic' to 'likely' — already being run on fresh legs; the test is holding it under build-week load." },
+    "easy_pace_current": { "band_s_per_km": [390, 405], "note": "6:30–6:45 at 138–144 bpm, as of Sep 2026 (was ~6:50–7:00). Zones unchanged: Z2 ceiling 147, LTHR 177 — the paces attached to them moved, not the zones." },
+    "threshold_band_s_per_km": [275, 285],
+    "threshold_note": "4:35–4:45 targeting 4:40. Held at the September checkpoint — cost is falling but HR at 4:40 (~179) is still above LTHR 177. Re-examined after the Nov 1 race.",
+    "weekly_km_cap": 60,
+    "weekly_km_cap_note": "Raised from 55 — targeted for end of 2026, sequenced after the November tempo block settles; extra volume to come from a sixth day and long-run growth.",
     "long_run_by_dec_km": 24,
-    "threshold_projection": "Bands likely move 4:35–4:45 → ~4:25–4:35 if September confirms"
+    "marathon_pace_s_per_km": 298,
+    "marathon_pace_note": "4:58/km = 3:29:40. To be trained at altitude at the literal pace on shorter segments, effort-equivalent on longer ones."
   },
 
   "gear": [
