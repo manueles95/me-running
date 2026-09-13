@@ -7,7 +7,7 @@ export type RaceStatus = 'completed' | 'upcoming' | 'planned';
 export type PhaseStatus = 'done' | 'current' | 'planned';
 export type PhaseKind = 'break';
 export type WeekType = 'build' | 'deload' | 'race' | 'break' | 'ramp';
-export type EasyRunKind = 'easy' | 'long' | 'recovery';
+export type EasyRunKind = 'easy' | 'long' | 'recovery' | 'steady';
 export type CheckpointStatus = 'pending' | 'passed' | 'adjusted';
 
 export interface Athlete {

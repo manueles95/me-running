@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-31",
+  "updated_at": "2026-09-12",
 
   "athlete": {
     "name": "Manuel",
@@ -49,8 +49,8 @@
   "phases": [
     { "id": "base-5x4",    "label": "Build: 5×4 threshold",            "start": "2026-07-20", "end": "2026-08-09", "status": "done" },
     { "id": "deload-aug",  "label": "Deload",                          "start": "2026-08-10", "end": "2026-08-16", "status": "done" },
-    { "id": "base-4x6",    "label": "Build: 4×6 threshold",            "start": "2026-08-17", "end": "2026-09-06", "status": "current" },
-    { "id": "deload-sep",  "label": "Deload + September checkpoint",   "start": "2026-09-07", "end": "2026-09-13", "status": "planned" },
+    { "id": "base-4x6",    "label": "Build: 4×6 threshold",            "start": "2026-08-17", "end": "2026-09-06", "status": "done" },
+    { "id": "deload-sep",  "label": "Deload + September checkpoint",   "start": "2026-09-07", "end": "2026-09-13", "status": "current" },
     { "id": "base-4x8",    "label": "Build: 4×8 (short — trip)",       "start": "2026-09-14", "end": "2026-09-25", "status": "planned" },
     { "id": "turkey",      "label": "Turkey with mom",                 "start": "2026-09-26", "end": "2026-10-08", "status": "planned", "kind": "break" },
     { "id": "return-ramp", "label": "Return ramp → 10K race",          "start": "2026-10-09", "end": "2026-11-01", "status": "planned" },
@@ -66,13 +66,13 @@
     { "start": "2026-08-03", "km": 48.9, "phase_id": "base-5x4",   "type": "build" },
     { "start": "2026-08-10", "km": 26.8, "phase_id": "deload-aug", "type": "deload" },
     { "start": "2026-08-17", "km": 49.4, "phase_id": "base-4x6",   "type": "build",  "highlight": "Longest run to date (18.35 km)" },
-    { "start": "2026-08-24", "km": 49.5, "phase_id": "base-4x6",   "type": "build" }
+    { "start": "2026-08-24", "km": 49.5, "phase_id": "base-4x6",   "type": "build" },
+    { "start": "2026-08-31", "km": 53.7, "phase_id": "base-4x6",   "type": "build",  "highlight": "First 20 km run; biggest week yet" }
   ],
 
   "future_plan": {
     "note": "Targets, not commitments. Everything after the Sep 10 checkpoint is provisional — paces get re-priced there, and volumes flex with life. The London build (Jan 4+) gets planned in December and appended then.",
     "weeks": [
-      { "start": "2026-08-31", "km_target": 50, "type": "build",  "phase_id": "base-4x6",    "quality": "4×6 #3", "long_run_km": 18, "note": "Long run may take 19 km if the block absorbs cleanly (week-3 decision)" },
       { "start": "2026-09-07", "km_target": 32, "type": "deload", "phase_id": "deload-sep",  "quality": "Light 3×6 optional", "long_run_km": 13, "note": "September checkpoint: EF trend + HR-at-4:40 read" },
       { "start": "2026-09-14", "km_target": 50, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #1 @ checkpoint-priced band, 2:30 rec", "long_run_km": 20 },
       { "start": "2026-09-21", "km_target": 38, "type": "build",  "phase_id": "base-4x8",    "quality": "4×8 #2", "long_run_km": null, "note": "Partial week — flying to Turkey Sat Sep 26" },
@@ -125,7 +125,14 @@
     { "date": "2026-08-26", "distance_km": 6.09,  "pace_s_per_km": 424, "avg_hr": 135.8, "ef": 1.042, "kind": "recovery", "note": "Flush after clean 4×6; lowest easy HR of the block" },
     { "date": "2026-08-27", "distance_km": 8.21,  "pace_s_per_km": 403, "avg_hr": 140.0, "ef": 1.063, "kind": "easy" },
     { "date": "2026-08-29", "distance_km": 17.02, "pace_s_per_km": 413, "avg_hr": 143.5, "ef": 1.013, "kind": "long",     "note": "Silver segment PR (WTC al Parque Hundido); fastest 15 km and 10 miles to date" },
-    { "date": "2026-08-31", "distance_km": 8.02,  "pace_s_per_km": 399, "avg_hr": 139.3, "ef": 1.079, "kind": "easy",     "note": "Best EF on record (1.079); Megablasts for fun, so the number is flattered" }
+    { "date": "2026-08-31", "distance_km": 8.02,  "pace_s_per_km": 399, "avg_hr": 139.3, "ef": 1.079, "kind": "easy",     "note": "Best EF on record (1.079); Megablasts for fun, so the number is flattered" },
+    { "date": "2026-09-01", "distance_km": 10.01, "pace_s_per_km": 401, "avg_hr": 140.5, "ef": 1.065, "kind": "easy" },
+    { "date": "2026-09-03", "distance_km": 5.58,  "pace_s_per_km": 397, "avg_hr": 134.2, "ef": 1.126, "kind": "recovery", "note": "Short and cheap — 6:37/km at 134 bpm" },
+    { "date": "2026-09-06", "distance_km": 20.02, "pace_s_per_km": 411, "avg_hr": 146.6, "ef": 0.996, "kind": "long",     "note": "First 20 km; 6 silver and 11 bronze segment PRs" },
+    { "date": "2026-09-08", "distance_km": 8.01,  "pace_s_per_km": 344, "avg_hr": 154.6, "ef": 1.128, "kind": "steady",   "note": "Steady run at 5:44/km — held out of the easy-run EF progression" },
+    { "date": "2026-09-09", "distance_km": 6.08,  "pace_s_per_km": 389, "avg_hr": 138.4, "ef": 1.114, "kind": "easy" },
+    { "date": "2026-09-10", "distance_km": 7.02,  "pace_s_per_km": 417, "avg_hr": 142.3, "ef": 1.011, "kind": "easy" },
+    { "date": "2026-09-12", "distance_km": 10.1,  "pace_s_per_km": 385, "avg_hr": 144.0, "ef": 1.082, "kind": "easy" }
   ],
 
   "quality_sessions": [
@@ -182,6 +189,15 @@
       "avg_rep_hr": 178.9,
       "relative_effort": 123,
       "note": "First clean 4×6 — early start, Adios Pro 4, 2:00 recoveries. 4:39–4:41 all four reps, avg HR 179 (vs 186 the week before). Baseline for the September checkpoint."
+    },
+    {
+      "date": "2026-09-02",
+      "label": "4×6 #3",
+      "structure": "4 × 6:00 @ 4:35–4:45, 2:00 rec",
+      "avg_rep_pace_s_per_km": 279,
+      "avg_rep_hr": 179.1,
+      "relative_effort": 100,
+      "note": "Reps 4:43 / 4:39 / 4:36 / 4:38 — conservative opener, fastest third. Same pace and HR as #2, but RE 123 → 100. Run in Megablasts."
     }
   ],
 
@@ -192,10 +208,12 @@
     { "date": "2026-08-09", "km": 16.58, "pace_s_per_km": 416, "avg_hr": 141.8 },
     { "date": "2026-08-15", "km": 13.03, "pace_s_per_km": 415, "avg_hr": 142.0 },
     { "date": "2026-08-22", "km": 18.35, "pace_s_per_km": 426, "avg_hr": 143.0 },
-    { "date": "2026-08-29", "km": 17.02, "pace_s_per_km": 413, "avg_hr": 143.5 }
+    { "date": "2026-08-29", "km": 17.02, "pace_s_per_km": 413, "avg_hr": 143.5 },
+    { "date": "2026-09-06", "km": 20.02, "pace_s_per_km": 411, "avg_hr": 146.6 }
   ],
 
   "milestones": [
+    { "date": "2026-09-06", "title": "First 20 km run", "detail": "20.02 km @ 6:51/km, 147 bpm — closing a 53.7 km week, the biggest yet" },
     { "date": "2026-08-22", "title": "Longest run to date", "detail": "18.35 km @ 7:06/km, 143 bpm — and cheaper than the first 18 km" },
     { "date": "2026-08-18", "title": "First 4×6 — biggest session ever", "detail": "24 min of quality @ 4:37/km avg, RE 129 (ran hot; lesson banked)" },
     { "date": "2026-08-09", "title": "First sub-7:00 long run", "detail": "16.6 km @ 6:56/km, 142 bpm — closed the block" },
