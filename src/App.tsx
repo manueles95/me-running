@@ -3,6 +3,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { Hero } from './components/Hero';
 import { RoadTimeline } from './components/RoadTimeline';
 import { CurrentBlock } from './components/CurrentBlock';
+import { RaceBreakdown } from './components/RaceBreakdown';
 import { EngineTrends } from './components/EngineTrends';
 import { Volume } from './components/Volume';
 import { LongRun } from './components/LongRun';
@@ -27,6 +28,7 @@ export default function App() {
           checkpoints={d.checkpoints}
           futurePlan={d.future_plan}
         />
+        <RaceBreakdown breakdown={d.race_breakdown} races={d.races} />
         <EngineTrends
           easyRuns={d.easy_runs}
           monthlyEf={d.monthly_ef}

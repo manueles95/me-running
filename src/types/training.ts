@@ -117,6 +117,36 @@ export interface LongRunPoint {
   note?: string;
 }
 
+/** One kilometre of a race. The last entry may be a partial km. */
+export interface RaceSplit {
+  km: number;
+  /** Set only when the final split is shorter than a full kilometre. */
+  partial_km?: number;
+  /** Pace for the split, normalised to seconds per full kilometre. */
+  pace_s_per_km: number;
+  avg_hr: number;
+  elev_gain_m: number;
+  /** Elapsed seconds at the end of this split. */
+  cum_s: number;
+}
+
+/** Kilometre-by-kilometre breakdown of one race (spec-additive). */
+export interface RaceBreakdown {
+  /** Matches a Race id, so the section can title itself from that entry. */
+  race_id: string;
+  note?: string;
+  finish_time_s: number;
+  /** GPS-measured distance, usually a little over the official one. */
+  gps_distance_km?: number;
+  /** Fastest rolling 10.00 km inside the activity, where Strava reports one. */
+  clean_10k_s?: number;
+  avg_hr: number;
+  max_hr: number;
+  first_half_s?: number;
+  second_half_s?: number;
+  splits: RaceSplit[];
+}
+
 export interface Milestone {
   date: string;
   title: string;
@@ -183,6 +213,8 @@ export interface TrainingData {
   easy_runs: EasyRun[];
   quality_sessions: QualitySession[];
   long_run_progression: LongRunPoint[];
+  /** Optional — absent until a race has been broken down. */
+  race_breakdown?: RaceBreakdown;
   milestones: Milestone[];
   comparisons: Comparison[];
   checkpoints: Checkpoint[];

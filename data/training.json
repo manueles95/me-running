@@ -247,6 +247,31 @@
     { "date": "2026-09-19", "km": 21.14, "pace_s_per_km": 399, "avg_hr": 147.0 }
   ],
 
+  "race_breakdown": {
+    "race_id": "cdmx-10k-2026",
+    "note": "Opened conservatively uphill, found rhythm by km 3, lost a little over the course's high point at km 8, then closed with the two fastest kilometres of the day. Negative split: 24:59 out, 23:51 back.",
+    "finish_time_s": 2974,
+    "gps_distance_km": 10.17,
+    "clean_10k_s": 2917,
+    "avg_hr": 191.2,
+    "max_hr": 204,
+    "first_half_s": 1499,
+    "second_half_s": 1431,
+    "splits": [
+      { "km": 1,  "pace_s_per_km": 314, "avg_hr": 182.1, "elev_gain_m": 10.2, "cum_s": 314 },
+      { "km": 2,  "pace_s_per_km": 312, "avg_hr": 183.8, "elev_gain_m": 10.2, "cum_s": 627 },
+      { "km": 3,  "pace_s_per_km": 288, "avg_hr": 188.9, "elev_gain_m": 12.6, "cum_s": 914 },
+      { "km": 4,  "pace_s_per_km": 297, "avg_hr": 189.7, "elev_gain_m": 2.0,  "cum_s": 1211 },
+      { "km": 5,  "pace_s_per_km": 288, "avg_hr": 192.0, "elev_gain_m": 2.4,  "cum_s": 1499 },
+      { "km": 6,  "pace_s_per_km": 286, "avg_hr": 193.7, "elev_gain_m": 6.4,  "cum_s": 1785 },
+      { "km": 7,  "pace_s_per_km": 296, "avg_hr": 193.1, "elev_gain_m": 5.4,  "cum_s": 2081 },
+      { "km": 8,  "pace_s_per_km": 303, "avg_hr": 193.9, "elev_gain_m": 18.2, "cum_s": 2384 },
+      { "km": 9,  "pace_s_per_km": 273, "avg_hr": 196.3, "elev_gain_m": 0.4,  "cum_s": 2657 },
+      { "km": 10, "pace_s_per_km": 273, "avg_hr": 199.1, "elev_gain_m": 5.0,  "cum_s": 2930 },
+      { "km": 11, "partial_km": 0.172, "pace_s_per_km": 254, "avg_hr": 201.7, "elev_gain_m": 0.2, "cum_s": 2974 }
+    ]
+  },
+
   "milestones": [
     { "date": "2026-11-01", "title": "Sub-50 10K, first time of asking", "detail": "48:37 for the 10 km split at 4:52/km, avg HR 191 — the public goal met, and 17 PRs on the way" },
     { "date": "2026-09-19", "title": "Half-marathon distance, in training", "detail": "21.14 km @ 6:39/km, 147 bpm — first time past 21.1 km, closing a 54.0 km week" },

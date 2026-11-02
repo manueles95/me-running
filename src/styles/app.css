@@ -559,6 +559,41 @@
   color: var(--ink-2);
 }
 
+/* Race headline numbers — the figures that don't need a plot to be read. */
+.racestats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  margin: 14px 0 0;
+}
+.racestats__item {
+  padding: 12px 14px;
+  border-left: 3px solid var(--cat-race);
+  background: var(--chart-band);
+  border-radius: 0 8px 8px 0;
+}
+.racestats__k {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.racestats__v {
+  margin: 4px 0 0;
+}
+.racestats__num {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.racestats__sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
 /* ---- Charts (§5.4–5.6) ----------------------------------------------- */
 .charts-2 {
   display: grid;
