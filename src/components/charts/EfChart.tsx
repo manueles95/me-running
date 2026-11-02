@@ -58,9 +58,9 @@ function rollingMean(values: number[], i: number, window = 3): number {
 }
 
 export function EfChart({ easyRuns, monthlyEf, targets }: Props) {
-  // Steady runs are logged for volume but sit above easy effort, so their EF
-  // isn't comparable — keep them out of the easy-run progression entirely.
-  const progressionRuns = easyRuns.filter((r) => r.kind !== 'steady');
+  // Steady runs and races are logged for volume but sit above easy effort, so
+  // their EF isn't comparable — keep them out of the easy-run progression.
+  const progressionRuns = easyRuns.filter((r) => r.kind !== 'steady' && r.kind !== 'race');
   // Per-run EF: only runs with a real EF (skip null-HR runs — no zero-plotting).
   const validRuns = [...progressionRuns]
     .filter((r): r is EasyRun & { ef: number; avg_hr: number } => r.ef != null && r.avg_hr != null)
